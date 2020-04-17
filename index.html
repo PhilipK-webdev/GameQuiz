@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./game.html" id="myLink">
     <title>Home Page</title>
 
 </head>
@@ -38,13 +39,14 @@
     </div>
 
     <div id="startGame">
-        <a href="./game.html">Start Game</a>
+        <!-- <a id="begin" href="./game.html">Start Game</a> -->
+        <!-- <button id="begin" onclick="myFucntion()">Start Game</button> -->
+        <button onclick="window.location.href = './game.html';">Start Game</button>
     </div>
 
 
 
-
-    <script src="./game-page.js"></script>
+    <script src="./game-page.js" type="text/javascript"></script>
 </body>
 
 </html>

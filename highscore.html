@@ -10,16 +10,23 @@
 
 <body>
     <div class="container-score">
+
         <form id="form-save-score">
             <div id="title">Show the page history of the games.</div>
             <div id="register">
                 <input type="text" name="text" id="historyGame">
-                <input id="submitBackPage" type="submit" value="Home Page">
-                <input id="submitClearHistory" type="submit" value="Clear History">
             </div>
         </form>
     </div>
-    <script src="./game-page.js"></script>
+
+    <div class="btn-submit">
+        <button id="submitBackPage" onclick="window.location.href ='./index.html';">Home page</button>
+
+        <button id="submitClearHistory">Clear History</button>
+    </div>
+
+    <script src="./game-page.js" type="text/javascript"></script>
+
 </body>
 
 </html>
