@@ -1,4 +1,50 @@
-/* form{
+body{
 
-    display: none;
-} */
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+header{
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+#highIdScore a{
+
+    text-decoration: none;
+}
+
+.card {
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+}
+
+#startGame{
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#startGame a{
+
+    text-decoration: none;
+}
+
+p{
+    width: 250px;
+    text-align: center;
+}
