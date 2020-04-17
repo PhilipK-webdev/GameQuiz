@@ -1,7 +1,10 @@
-body{
-
+body, html{
+    box-sizing: border-box;
+    height: 100%;
     margin: 0;
+    padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: grid;
 }
 
 nav{
@@ -44,7 +47,46 @@ header{
     text-decoration: none;
 }
 
-p{
+#paragraph{
     width: 250px;
     text-align: center;
 }
+
+#items{
+
+    display: flex;
+    justify-content: center;
+    margin-right: 40px;
+    
+}
+
+li{
+
+    width: 250px;
+    border:2px solid black;
+    list-style-type: none;
+    text-align: center;
+}
+
+#question{
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin:0 auto;
+    border: 2px solid black;
+    margin-left: auto;
+    width:250px;
+}
+
+ hr{
+
+    width:33%;
+}
+
+#stateOfTheAnswer{
+
+   text-align: center;
+   margin-right: 25%;
+}
+
