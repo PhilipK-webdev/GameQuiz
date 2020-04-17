@@ -99,14 +99,16 @@ li{
 
 .container{
 
-    display: flex;
+    display: none;
     justify-content: center;
+    
    
 }
 
 .container-display{
 
-    display: none;
+    display: flex;
+    justify-content: center;
 }
 
 .container-score{
