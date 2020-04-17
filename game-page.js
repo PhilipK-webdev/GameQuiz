@@ -4,21 +4,24 @@ var Questions = [
     {
         question: "The meaning of the sign = is: ",
         answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
-        correctAnswer: "compare between the objects"
+        correctAnswer: 0
     },
     {
-        question: "The meaning of the sign = is: ",
+        question: "dasdasd--------------------",
         answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
-        correctAnswer: "assignment to varieble"
+        correctAnswer: 1
     },
     {
-        question: "The meaning of the sign = is: ",
+        question: "fsdsdfdsf ",
         answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
-        correctAnswer: "doesnt have any meaning"
+        correctAnswer: 2
     }
 ];
 
+var objectQuestion = new Object();
 
+
+var numQuestion = 0;
 var gameSeconds = 15;
 var firstOption = document.querySelector("#option1");
 var secondOption = document.querySelector("#option2");
@@ -70,35 +73,61 @@ function startIntervel() {
 function startTheGameQuiz() {
 
     var howManyQuestion = Questions.length;
-    var numQuestion = 0;
+
     var arrayOfOptions = [firstOption, secondOption, thirdOption, lastOption];
-    var events = [];
 
-    for (var i = 0; i < arrayOfOptions.length; i++) {
+    changeTheHTML(numQuestion);
 
-        events[i] = arrayOfOptions[i].addEventListener("click", function () {
-
-            console.log("IM EVENT");
-
-        });
-    }
+    console.log(Questions[numQuestion].correctAnswer);
+    console.log(firstOption.textContent);
 
 
-    // first Question.
-    firstOption.textContent = Questions[0].answers[0];
-    secondOption.textContent = Questions[0].answers[1];
-    thirdOption.textContent = Questions[0].answers[2];
-    lastOption.textContent = Questions[0].answers[3];
 
     for (var i = 0; i < 3; i++) {
 
-        events[i].addEventListener("click", function () {
+        arrayOfOptions[i].addEventListener("click", function (event) {
 
-            console.log("h1");
+            var id = event.target.id;
+            var answerIndex;
+            if (id === "option1") {
 
+                answerIndex = 0;
+            } else if (id === "option2") {
+
+                answerIndex = 1;
+
+            } else if (id === "option3") {
+
+                answerIndex = 2;
+            } else {
+
+                answerIndex = 3;
+            }
+
+            if (Questions[numQuestion].correctAnswer === answerIndex) {
+
+                console.log("correct");
+            }
+
+            numQuestion++;
+            changeTheHTML(numQuestion);
         });
+
+
     }
 
+}
+
+function changeTheHTML(numQuestion) {
+
+    if (numQuestion < 3) {
+
+        question.textContent = Questions[numQuestion].question;
+        firstOption.textContent = Questions[numQuestion].answers[0];
+        secondOption.textContent = Questions[numQuestion].answers[1];
+        thirdOption.textContent = Questions[numQuestion].answers[2];
+        lastOption.textContent = Questions[numQuestion].answers[3];
+    }
 
 }
 
