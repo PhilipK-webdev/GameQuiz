@@ -1,35 +1,34 @@
-// var hostanmeUrl = window.location.href;
-
+// var hostNameUrl = window.location.href;
 var Questions = [
 
     {
-        answer: ["a", "b", "c", "d"],
-        question: "How are you tommoroy?",
-        correctAnswer: 2
+        question: "The meaning of the sign = is: ",
+        answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
+        correctAnswer: "compare between the objects"
     },
     {
-        answer: ["a", "b", "c", "d"],
-        question: "How are you yesterday?",
-        correctAnswer: 1
+        question: "The meaning of the sign = is: ",
+        answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
+        correctAnswer: "assignment to varieble"
     },
-
-
     {
-        answer: ["a", "b", "c", "d"],
-        questio: "How are you today?",
-        correctAnswer: 3
+        question: "The meaning of the sign = is: ",
+        answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
+        correctAnswer: "doesnt have any meaning"
     }
-
 ];
 
-var question = document.querySelector("#question");
+
+var gameSeconds = 15;
 var firstOption = document.querySelector("#option1");
 var secondOption = document.querySelector("#option2");
 var thirdOption = document.querySelector("#option3");
 var lastOption = document.querySelector("#option4");
-
+var timerRun = document.querySelector("#timer-run");
+var question = document.querySelector("#question");
 var containerForm = document.querySelector(".container");
 var items = document.querySelector("#items");
+init();
 
 
 
@@ -45,38 +44,72 @@ var items = document.querySelector("#items");
 
 
 
-var timerRun = document.querySelector("#timer-run");
-var gameSeconds = 10;
 
 
 
+function startIntervel() {
 
-var gameToPlay = setInterval(function () {
 
-    gameSeconds--;
-    timerRun.textContent = "Time: " + gameSeconds;
+    var gameToPlay = setInterval(function () {
 
-    if (gameSeconds === 0) {
+        gameSeconds--;
+        timerRun.textContent = "Time: " + gameSeconds;
 
-        clearInterval(gameToPlay);
-        containerForm.setAttribute("class", "container-display");
-        question.style.display = "none";
-        items.style.display = "none";
+        if (gameSeconds <= 0) {
 
+            clearInterval(gameToPlay);
+            containerForm.setAttribute("class", "container-display");
+            question.style.display = "none";
+            items.style.display = "none";
+
+        }
+
+    }, 1000)
+}
+
+function startTheGameQuiz() {
+
+    var howManyQuestion = Questions.length;
+    var numQuestion = 0;
+    var arrayOfOptions = [firstOption, secondOption, thirdOption, lastOption];
+    var events = [];
+
+    for (var i = 0; i < arrayOfOptions.length; i++) {
+
+        events[i] = arrayOfOptions[i].addEventListener("click", function () {
+
+            console.log("IM EVENT");
+
+        });
     }
 
-}, 1000)
+
+    // first Question.
+    firstOption.textContent = Questions[0].answers[0];
+    secondOption.textContent = Questions[0].answers[1];
+    thirdOption.textContent = Questions[0].answers[2];
+    lastOption.textContent = Questions[0].answers[3];
+
+    for (var i = 0; i < 3; i++) {
+
+        events[i].addEventListener("click", function () {
+
+            console.log("h1");
+
+        });
+    }
+
+
+}
+
+function init() {
 
 
 
+    startIntervel();
+
+    startTheGameQuiz();
 
 
-// var question = document.querySelector("#question");
 
-// question.style.color = "blue";
-
-// question.addEventListener("click", () => {
-
-//     console.log("hello");
-
-// })
+}
