@@ -77,6 +77,7 @@ li{
     border: 2px solid black;
     margin-left: auto;
     width:250px;
+    margin-top: 5px;
 }
 
  hr{
@@ -90,3 +91,50 @@ li{
    margin-right: 25%;
 }
 
+#form-add-score{
+
+    display:table-cell;
+    
+}
+
+.container{
+
+    display: flex;
+    justify-content: center;
+   
+}
+
+.container-display{
+
+    display: none;
+}
+
+.container-score{
+
+    display: flex;
+    justify-content: center;
+
+}
+#form-save-score{
+
+    margin: auto;
+}
+
+#register{
+
+    display: table-caption;
+
+}
+#title{
+
+    margin-bottom: 75px;
+}
+#submitBackPage{
+
+    margin-bottom: 10px;
+}
+
+#historyGame{
+
+    margin-bottom: 10px;
+}
