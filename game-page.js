@@ -2,27 +2,31 @@
 var Questions = [
 
     {
-        question: "The meaning of the sign = is: ",
+        question: "First Question ",
         answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
         correctAnswer: 0
     },
     {
-        question: "dasdasd--------------------",
+        question: "Second Question",
         answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
         correctAnswer: 1
     },
     {
-        question: "fsdsdfdsf ",
+        question: "Third Question ",
         answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
-        correctAnswer: 2
+        correctAnswer: 3
     }
 ];
 
-var objectQuestion = new Object();
+console.log(Questions.length + "the object length");
 
 
 var numQuestion = 0;
-var gameSeconds = 15;
+
+var userScore = 0;
+var gameSeconds = 90;
+var classFlag = true;
+var answerIndex = 0;
 var firstOption = document.querySelector("#option1");
 var secondOption = document.querySelector("#option2");
 var thirdOption = document.querySelector("#option3");
@@ -31,6 +35,8 @@ var timerRun = document.querySelector("#timer-run");
 var question = document.querySelector("#question");
 var containerForm = document.querySelector(".container");
 var items = document.querySelector("#items");
+
+
 init();
 
 
@@ -58,12 +64,13 @@ function startIntervel() {
         gameSeconds--;
         timerRun.textContent = "Time: " + gameSeconds;
 
-        if (gameSeconds <= 0) {
+        if (gameSeconds < 0 || numQuestion > Questions.length - 1) {
 
             clearInterval(gameToPlay);
             containerForm.setAttribute("class", "container-display");
             question.style.display = "none";
             items.style.display = "none";
+            timerRun.textContent = "Time";
 
         }
 
@@ -72,23 +79,18 @@ function startIntervel() {
 
 function startTheGameQuiz() {
 
-    var howManyQuestion = Questions.length;
 
     var arrayOfOptions = [firstOption, secondOption, thirdOption, lastOption];
 
     changeTheHTML(numQuestion);
 
-    console.log(Questions[numQuestion].correctAnswer);
-    console.log(firstOption.textContent);
-
-
-
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 4; i++) {
 
         arrayOfOptions[i].addEventListener("click", function (event) {
 
+
             var id = event.target.id;
-            var answerIndex;
+
             if (id === "option1") {
 
                 answerIndex = 0;
@@ -100,36 +102,53 @@ function startTheGameQuiz() {
 
                 answerIndex = 2;
             } else {
-
                 answerIndex = 3;
             }
 
-            if (Questions[numQuestion].correctAnswer === answerIndex) {
+            if (numQuestion < Questions.length) {
 
-                console.log("correct");
+                if (Questions[numQuestion].correctAnswer === answerIndex) {
+
+                    userScore += 10;
+                    console.log(userScore);
+                    classFlag = true;
+
+
+                } else {
+
+                    gameSeconds -= 5;
+                    classFlag = false;
+
+                }
+
+
             }
 
+            // changeStyle(numQuestion);
             numQuestion++;
             changeTheHTML(numQuestion);
+
         });
-
-
     }
-
 }
 
 function changeTheHTML(numQuestion) {
 
-    if (numQuestion < 3) {
+    if (numQuestion <= Questions.length - 1) {
 
         question.textContent = Questions[numQuestion].question;
         firstOption.textContent = Questions[numQuestion].answers[0];
         secondOption.textContent = Questions[numQuestion].answers[1];
         thirdOption.textContent = Questions[numQuestion].answers[2];
         lastOption.textContent = Questions[numQuestion].answers[3];
-    }
 
+
+    }
 }
+
+// function changeStyle(numQuestion) {
+
+// }
 
 function init() {
 
