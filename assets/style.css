@@ -63,7 +63,7 @@ header{
 li{
 
     width: 250px;
-    border:2px solid black;
+    /* border:2px solid black; */
     list-style-type: none;
     text-align: center;
 }
@@ -74,7 +74,7 @@ li{
     justify-content: center;
     align-content: center;
     margin:0 auto;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     margin-left: auto;
     width:250px;
     margin-top: 5px;
@@ -169,4 +169,5 @@ li{
 #horizon{
 
     margin-top: 20px;
+    display: none;
 }

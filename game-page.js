@@ -29,8 +29,7 @@ var option4 = document.querySelector("#option4");
 var timerRun = document.querySelector("#timer-run");
 var containerForm = document.querySelector(".container");
 var scoreDisplya = document.querySelector("#score-display");
-var horizon = document.querySelector("#horizon");
-horizon.setAttribute("style", "display:none;");
+
 
 
 
@@ -86,9 +85,10 @@ function startIntervel() {
 function renderID() {
 
 
-    changeTheHTML(numQuestion, horizon);
+    changeTheHTML(numQuestion);
 
     var newId;
+    var flag = true;
 
     for (var i = 0; i < 4; i++) {
 
@@ -102,31 +102,25 @@ function renderID() {
 
             var checkI = this.getAttribute("data-id");
             newId = parseInt(checkI);
-
-
-
+            horizon.style.display = "block";
+            console.log("ahahhahahaha");
             if (numQuestion < Questions.length) {
 
                 if (Questions[numQuestion].correctAnswer === newId) {
 
-                    console.log("yES");
+                    paragraph.textContent = "Correct";
                     userScore += 10;
                     console.log(userScore);
-                    changeHr();
+                } else {
+
+                    gameSeconds -= 5;
+                    paragraph.textContent = "Wrong";
                 }
 
                 numQuestion++;
                 changeTheHTML(numQuestion);
-
                 console.log(newId);
             }
-
-
-
-
-
-
-
 
         });
 
@@ -135,32 +129,26 @@ function renderID() {
 
 }
 
-
-function changeHr() {
-
-
-
-    if (horizon.getAttribute("style") === "display:none;") {
-        horizon.setAttribute("style", "display:block;");
-        console.log("1");
-    } else {
-
-        horizon.setAttribute("style", "display:none;");
-        console.log("2");
-    }
-
-
-}
-
 function changeTheHTML(numQuestion) {
 
-    console.log(numQuestion);
-    if (numQuestion <= Questions.length - 1) {
+    var horizon = document.querySelector("#horizon");
+    var paragraph = document.querySelector("#paragraph");
 
-        question.textContent = Questions[numQuestion].question;
-        option1.textContent = Questions[numQuestion].answers[0];
-        option2.textContent = Questions[numQuestion].answers[1];
-        option3.textContent = Questions[numQuestion].answers[2];
-        option4.textContent = Questions[numQuestion].answers[3];
-    }
+    setTimeout(function () {
+
+
+        if (numQuestion <= Questions.length - 1) {
+
+            question.textContent = Questions[numQuestion].question;
+            option1.textContent = Questions[numQuestion].answers[0];
+            option2.textContent = Questions[numQuestion].answers[1];
+            option3.textContent = Questions[numQuestion].answers[2];
+            option4.textContent = Questions[numQuestion].answers[3];
+            horizon.style.display = "none";
+            paragraph.textContent = "";
+
+        }
+
+    }, 500);
+
 }
