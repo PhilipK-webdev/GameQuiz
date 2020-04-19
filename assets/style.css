@@ -47,7 +47,7 @@ header{
     text-decoration: none;
 }
 
-#paragraph{
+#paragraph-head{
     width: 250px;
     text-align: center;
 }
@@ -113,6 +113,12 @@ li{
 
 .container-score{
 
+    display: none;
+   
+}
+
+.container-score-display{
+
     display: flex;
     justify-content: center;
     height: 60vh;
@@ -145,6 +151,11 @@ li{
     margin-left:50px;
 }
 .btn-submit{
+
+    display: none;
+}
+
+.btn-submit-display{
 
     display: inline-flex;
     justify-content: center;

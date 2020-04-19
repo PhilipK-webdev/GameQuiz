@@ -40,19 +40,17 @@ buttonBtn.addEventListener("click", function (event) {
     var userText = textInput.value;
     textInput.value = "";
     console.log(userText);
-
+    showHighScore();
 
 });
 
-btnHighScore.addEventListener("click", function (event) {
+function showHighScore() {
 
-    event.preventDefault();
-    console.log("PRESSS");
-    document.location.href = "./highscore.html";
-
-}, true)
-
-
+    document.querySelector(".container-score").setAttribute("class", "container-score-display");
+    document.querySelector(".btn-submit").setAttribute("class", "btn-submit-display");
+    document.querySelector("nav").style.display = "none";
+    containerForm.setAttribute("class", "container");
+}
 
 
 
@@ -88,7 +86,6 @@ function startIntervel() {
             items.style.display = "none";
             scoreDisplya.textContent = "Your final score is " + userScore;
             timerRun.textContent = "Time";
-
         }
 
     }, 1000)
