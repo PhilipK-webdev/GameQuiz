@@ -30,6 +30,28 @@ var timerRun = document.querySelector("#timer-run");
 var containerForm = document.querySelector(".container");
 var scoreDisplya = document.querySelector("#score-display");
 
+var buttonBtn = document.querySelector("#button-btn");
+var textInput = document.querySelector("#textInput");
+var btnHighScore = document.querySelector("#btn-highscore");
+
+buttonBtn.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    var userText = textInput.value;
+    textInput.value = "";
+    console.log(userText);
+
+
+});
+
+btnHighScore.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    console.log("PRESSS");
+    document.location.href = "./highscore.html";
+
+}, true)
+
 
 
 
