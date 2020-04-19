@@ -27,13 +27,13 @@ var option2 = document.querySelector("#option2");
 var option3 = document.querySelector("#option3");
 var option4 = document.querySelector("#option4");
 var timerRun = document.querySelector("#timer-run");
-var containerForm = document.querySelector(".container");
+var containerForm = document.querySelector(".container-form");
 var scoreDisplya = document.querySelector("#score-display");
 
 var buttonBtn = document.querySelector("#button-btn");
 var textInput = document.querySelector("#textInput");
 var register = document.querySelector("#register");
-var btnStartGame = document.querySelector("#startGame");
+var btnStartGame = document.querySelector("#btnStartGame");
 var submitBackPage = document.querySelector("#submitBackPage");
 var arrayHistoryGame;
 
@@ -49,7 +49,9 @@ if (!Array.isArray(arrayHistoryGame)) {
 
 buttonBtn.addEventListener("click", function (event) {
 
+
     event.preventDefault();
+
     arrayHistoryGame.push(textInput.value);
     textInput.value = "";
     window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
@@ -60,10 +62,10 @@ buttonBtn.addEventListener("click", function (event) {
 
 function showHighScore() {
 
-    document.querySelector(".container-score").setAttribute("class", "container-score-display");
-    document.querySelector(".btn-submit").setAttribute("class", "btn-submit-display");
+    document.querySelector(".container-score").setAttribute("class", "container-score");
+    // document.querySelector(".btn-submit").setAttribute("class", "btn-submit");
     document.querySelector("nav").style.display = "none";
-    containerForm.setAttribute("class", "container");
+    containerForm.classList.add("hide");
 
 }
 
@@ -86,12 +88,17 @@ btnStartGame.addEventListener("click", function () {
 
 });
 
+document.querySelector(".container-score").classList.add("hide");
+containerForm.classList.add("hide");
 
 function startGameQuiz() {
 
-    btnStartGame.setAttribute("class", "startGame-display");
+    btnStartGame.classList.add("hide");
     document.querySelector("header").style.display = "none";
     document.querySelector(".card").style.display = "none";
+    document.querySelector(".container-score").classList.add("hide");
+
+
     renderID();
     startIntervel();
 
@@ -113,12 +120,21 @@ function startIntervel() {
         gameSeconds--;
         timerRun.textContent = "Time: " + gameSeconds;
 
-        if (gameSeconds < 0 || numQuestion > Questions.length - 1) {
+        if (gameSeconds <= 0 || numQuestion > Questions.length - 1) {
 
             clearInterval(gameToPlay);
-            containerForm.setAttribute("class", "container-display");
+            // var before = containerForm.classList;
+            // console.log('before', before);
+            containerForm.setAttribute("class", "container-form");
+            // var after = containerForm.classList;
+            // console.log('after ' + after);
+            // containerForm.className = "container-score display";
+
+            // var classes = containerForm.classList;
+            // classes.add('display');
+
             question.style.display = "none";
-            items.style.display = "none";
+            document.querySelector("#items").style.display = "none";
             scoreDisplya.textContent = "Your final score is " + userScore;
             timerRun.textContent = "Time";
         }
@@ -142,11 +158,11 @@ function renderID() {
     changeTheHTML(numQuestion);
 
     var newId;
-    var flag = true;
+    var arr = [option1, option2, option3, option4];
 
     for (var i = 0; i < 4; i++) {
 
-        var arr = [option1, option2, option3, option4];
+
 
         arr[i].setAttribute("data-id", i);
 

@@ -1,3 +1,8 @@
+:root {
+   --border-color: blue;
+  }
+
+
 body, html{
     box-sizing: border-box;
     height: 100%;
@@ -7,14 +12,25 @@ body, html{
     display: grid;
 }
 
-nav{
+.nav-bar{
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
 }
-header{
+
+.container-score{
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin:auto;
+    padding: auto;
+   
+}
+/* style for class = .title */
+.title{
 
     display: flex;
     justify-content: center;
@@ -22,10 +38,6 @@ header{
     text-align: center;
 }
 
-#highIdScore a{
-
-    text-decoration: none;
-}
 
 .card {
 
@@ -33,42 +45,27 @@ header{
     justify-content: center;
     align-content: center;
     
-}
-
-.startGame{
-
-    display: flex;
-    justify-content: center;
-    align-content: center;
-}
-
-.startGame-display{
-
-    display: none;
-}
-
-#paragraph-head{
-    width: 250px;
-    text-align: center;
-}
-
-#items{
-
-    display: flex;
-    justify-content: center;
-    margin-right: 40px;
     
 }
 
-li{
-
+.card p{
     width: 250px;
-    /* border:2px solid black; */
-    list-style-type: none;
     text-align: center;
 }
 
-#question{
+
+.container-form{
+    display: flex;
+    justify-content: center;
+}
+
+.form-add-score{
+
+    display:table-cell;
+    
+}
+
+.askQuestion{
 
     display: flex;
     justify-content: center;
@@ -80,110 +77,145 @@ li{
     margin-top: 5px;
 }
 
- /* hr{
+.items{
 
-    width:33%;
+    display: flex;
+    justify-content: center;
+    margin-right: 40px;
+    
+}
+
+li{
+    width: 250px;
+    /* border:2px solid black; */
+    list-style-type: none;
+    text-align: center;
+}
+
+hr{
+    margin-top: 20px;
+    display: none;
+}
+
+.startGame{
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+
+/* .display {
+    display: flex;
 } */
 
-#stateOfTheAnswer{
-
-   text-align: center;
-   margin-right: 25%;
-}
-
-#form-add-score{
-
-    display:table-cell;
-    
-}
-
-.container{
-
+.hide {
     display: none;
-    justify-content: center;
-    
+}
+
+
+
+
+/* #title{
+
+    margin-top: 15px;
+    padding: 10px;
    
-}
+} */
 
-.container-display{
-
-    display: flex;
-    justify-content: center;
-}
-
-.container-score{
-
-    display: none;
-   
-}
-
-.container-score-display{
-
-    display: flex;
-    justify-content: center;
-    height: 60vh;
-}
-#form-save-score{
+/* .form-save-score{
 
    
     border:1px solid black;
     padding: auto;
     margin-top: 40px;
-}
+} */
 
-#register{
 
-    display: table-caption;
-    margin-top: 75px;
 
-}
-#title{
 
-   margin-top: 15px;
-    text-align: center;
-    padding: 10px;
-    text-decoration: underline;
-}
 
-#historyGame{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #highIdScore a{
+
+    text-decoration: none;
+} */
+
+
+
+
+/* 
+.startGame-display{
+
+    display: none;
+} */
+
+
+
+
+
+
+
+ /* hr{
+
+    width:33%;
+} */
+
+/* #stateOfTheAnswer{
+
+   text-align: center;
+   margin-right: 25%;
+} */
+
+
+
+
+
+
+
+
+
+/* #historyGame{
 
     margin-bottom: 10px;
     margin-left:50px;
-}
-.btn-submit{
+} */
 
-    display: none;
-}
 
-.btn-submit-display{
 
-    display: inline-flex;
-    justify-content: center;
-    align-content: center;
-    margin: 0;
-}
-
-#submitBackPage{
+/* #submitBackPage{
     height: 50px;
     width: 50px;
     border-radius: 20%;
     
-}
+    
+} */
 
-#submitClearHistory{
+/* #submitClearHistory{
     height: 50px;
     width: 50px;
     border-radius: 20%;
     
-}
+} */
 
-#horizon{
 
-    margin-top: 20px;
-    display: none;
-}
 
- #button-btn{
+ /* #button-btn{
         box-shadow: 0px 10px 14px -7px #3e7327;
         background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
         background-color:#77b55a;
@@ -208,4 +240,6 @@ li{
     #button-btn:active {
         position:relative;
         top:1px;
-    }
+    } */
+
+  
