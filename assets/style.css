@@ -80,10 +80,10 @@ li{
     margin-top: 5px;
 }
 
- hr{
+ /* hr{
 
     width:33%;
-}
+} */
 
 #stateOfTheAnswer{
 
@@ -164,4 +164,9 @@ li{
     width: 50px;
     border-radius: 20%;
     
+}
+
+#horizon{
+
+    margin-top: 20px;
 }
