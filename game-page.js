@@ -35,52 +35,14 @@ var textInput = document.querySelector("#textInput");
 var register = document.querySelector("#register");
 var btnStartGame = document.querySelector("#btnStartGame");
 var submitBackPage = document.querySelector("#submitBackPage");
+var btnHighIdScore = document.querySelector("#btnHighIdScore");
 var arrayHistoryGame;
 
-if (!Array.isArray(arrayHistoryGame)) {
-
-    arrayHistoryGame = [];
-    console.log(arrayHistoryGame.length);
-} else {
-    console.log("IM HERERERERERER");
-    arrayHistoryGame = JSON.parse(window.localStorage.getItem("toDo"));
-}
 
 
-buttonBtn.addEventListener("click", function (event) {
 
-
-    event.preventDefault();
-
-    arrayHistoryGame.push(textInput.value);
-    textInput.value = "";
-    window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
-    showHighScore();
-    renderPlayerNames();
-
-});
-
-function showHighScore() {
-
-    document.querySelector(".container-score").setAttribute("class", "container-score");
-    // document.querySelector(".btn-submit").setAttribute("class", "btn-submit");
-    document.querySelector("nav").style.display = "none";
-    containerForm.classList.add("hide");
-
-}
-
-function renderPlayerNames() {
-
-    var arrayNames = JSON.parse(window.localStorage.getItem("names"));
-    for (var i = 0; i < arrayNames.length; i++) {
-
-        var labelTag = document.createElement("lable");
-        labelTag.textContent = arrayNames[i];
-        labelTag.setAttribute("data-id", i);
-        register.appendChild(labelTag);
-    }
-    console.log(arrayHistoryGame);
-}
+document.querySelector(".container-score").classList.add("hide");
+containerForm.classList.add("hide");
 
 btnStartGame.addEventListener("click", function () {
 
@@ -88,8 +50,17 @@ btnStartGame.addEventListener("click", function () {
 
 });
 
-document.querySelector(".container-score").classList.add("hide");
-containerForm.classList.add("hide");
+btnHighIdScore.addEventListener("click", function () {
+
+    document.querySelector("header").classList.add("hide");
+    document.querySelector(".card").style.display = "none";
+    document.querySelector(".startGame").classList.add("hide");
+    document.querySelector(".container-score").classList.remove("hide");
+    timerRun.classList.add("hide");
+    btnHighIdScore.classList.add("hide");
+
+
+});
 
 function startGameQuiz() {
 
@@ -97,61 +68,10 @@ function startGameQuiz() {
     document.querySelector("header").style.display = "none";
     document.querySelector(".card").style.display = "none";
     document.querySelector(".container-score").classList.add("hide");
-
-
     renderID();
     startIntervel();
 
 }
-
-
-
-
-
-
-
-
-
-function startIntervel() {
-
-
-    var gameToPlay = setInterval(function () {
-
-        gameSeconds--;
-        timerRun.textContent = "Time: " + gameSeconds;
-
-        if (gameSeconds <= 0 || numQuestion > Questions.length - 1) {
-
-            clearInterval(gameToPlay);
-            // var before = containerForm.classList;
-            // console.log('before', before);
-            containerForm.setAttribute("class", "container-form");
-            // var after = containerForm.classList;
-            // console.log('after ' + after);
-            // containerForm.className = "container-score display";
-
-            // var classes = containerForm.classList;
-            // classes.add('display');
-
-            question.style.display = "none";
-            document.querySelector("#items").style.display = "none";
-            scoreDisplya.textContent = "Your final score is " + userScore;
-            timerRun.textContent = "Time";
-        }
-
-    }, 1000)
-}
-
-
-
-
-
-
-
-
-
-
-
 function renderID() {
 
 
@@ -223,14 +143,92 @@ function changeTheHTML(numQuestion) {
 
 }
 
-
-// submitBackPage.addEventListener("click", function () {
-
-//     document.querySelector("nav").style.display = "flex";
-//     document.querySelector("header").style.display = "block";
-//     document.querySelector(".card").style.display = "block";
-//     btnStartGame.setAttribute("class", "startGame");
-//     // document.querySelector(".container-score").setAttribute("class", "container-score");
+function startIntervel() {
 
 
-// });
+    var gameToPlay = setInterval(function () {
+
+        gameSeconds--;
+        timerRun.textContent = "Time: " + gameSeconds;
+
+        if (gameSeconds <= 0 || numQuestion > Questions.length - 1) {
+
+            clearInterval(gameToPlay);
+            // var before = containerForm.classList;
+            // console.log('before', before);
+            containerForm.setAttribute("class", "container-form");
+            // var after = containerForm.classList;
+            // console.log('after ' + after);
+            // containerForm.className = "container-score display";
+
+            // var classes = containerForm.classList;
+            // classes.add('display');
+
+            question.style.display = "none";
+            document.querySelector("#items").style.display = "none";
+            scoreDisplya.textContent = "Your final score is " + userScore;
+            timerRun.textContent = "Time";
+        }
+
+    }, 1000)
+}
+
+buttonBtn.addEventListener("click", function (event) {
+
+
+    event.preventDefault();
+
+    arrayHistoryGame.push(textInput.value);
+    textInput.value = "";
+    window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
+    showHighScore();
+    renderPlayerNames();
+
+});
+
+function showHighScore() {
+
+    document.querySelector(".container-score").setAttribute("class", "container-score");
+    document.querySelector("nav").style.display = "none";
+    containerForm.classList.add("hide");
+}
+
+function renderPlayerNames() {
+
+    var arrayNames = JSON.parse(window.localStorage.getItem("names"));
+    for (var i = 0; i < arrayNames.length; i++) {
+
+        var labelTag = document.createElement("lable");
+        labelTag.textContent = arrayNames[i];
+        labelTag.setAttribute("data-id", i);
+        register.appendChild(labelTag);
+    }
+    console.log(arrayHistoryGame);
+}
+
+if (!Array.isArray(arrayHistoryGame)) {
+
+    arrayHistoryGame = [];
+    console.log(arrayHistoryGame.length);
+} else {
+    console.log("IM HERERERERERER");
+    arrayHistoryGame = JSON.parse(window.localStorage.getItem("toDo"));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
