@@ -35,16 +35,16 @@ header{
     
 }
 
-#startGame{
+.startGame{
 
     display: flex;
     justify-content: center;
     align-content: center;
 }
 
-#startGame a{
+.startGame-display{
 
-    text-decoration: none;
+    display: none;
 }
 
 #paragraph-head{

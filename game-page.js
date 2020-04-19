@@ -33,6 +33,8 @@ var scoreDisplya = document.querySelector("#score-display");
 var buttonBtn = document.querySelector("#button-btn");
 var textInput = document.querySelector("#textInput");
 var register = document.querySelector("#register");
+var btnStartGame = document.querySelector("#startGame");
+var submitBackPage = document.querySelector("#submitBackPage");
 var arrayHistoryGame;
 
 if (!Array.isArray(arrayHistoryGame)) {
@@ -78,17 +80,24 @@ function renderPlayerNames() {
     console.log(arrayHistoryGame);
 }
 
+btnStartGame.addEventListener("click", function () {
 
+    startGameQuiz();
+
+});
 
 
 function startGameQuiz() {
 
+    btnStartGame.setAttribute("class", "startGame-display");
+    document.querySelector("header").style.display = "none";
+    document.querySelector(".card").style.display = "none";
     renderID();
     startIntervel();
 
 }
 
-startGameQuiz();
+
 
 
 
@@ -197,3 +206,15 @@ function changeTheHTML(numQuestion) {
     }, 500);
 
 }
+
+
+// submitBackPage.addEventListener("click", function () {
+
+//     document.querySelector("nav").style.display = "flex";
+//     document.querySelector("header").style.display = "block";
+//     document.querySelector(".card").style.display = "block";
+//     btnStartGame.setAttribute("class", "startGame");
+//     // document.querySelector(".container-score").setAttribute("class", "container-score");
+
+
+// });
