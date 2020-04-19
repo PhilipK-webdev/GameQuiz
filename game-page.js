@@ -32,15 +32,27 @@ var scoreDisplya = document.querySelector("#score-display");
 
 var buttonBtn = document.querySelector("#button-btn");
 var textInput = document.querySelector("#textInput");
-var btnHighScore = document.querySelector("#btn-highscore");
+var register = document.querySelector("#register");
+var arrayHistoryGame;
+
+if (!Array.isArray(arrayHistoryGame)) {
+
+    arrayHistoryGame = [];
+    console.log(arrayHistoryGame.length);
+} else {
+    console.log("IM HERERERERERER");
+    arrayHistoryGame = JSON.parse(window.localStorage.getItem("toDo"));
+}
+
 
 buttonBtn.addEventListener("click", function (event) {
 
     event.preventDefault();
-    var userText = textInput.value;
+    arrayHistoryGame.push(textInput.value);
     textInput.value = "";
-    console.log(userText);
+    window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
     showHighScore();
+    renderPlayerNames();
 
 });
 
@@ -50,6 +62,20 @@ function showHighScore() {
     document.querySelector(".btn-submit").setAttribute("class", "btn-submit-display");
     document.querySelector("nav").style.display = "none";
     containerForm.setAttribute("class", "container");
+
+}
+
+function renderPlayerNames() {
+
+    var arrayNames = JSON.parse(window.localStorage.getItem("names"));
+    for (var i = 0; i < arrayNames.length; i++) {
+
+        var labelTag = document.createElement("lable");
+        labelTag.textContent = arrayNames[i];
+        labelTag.setAttribute("data-id", i);
+        register.appendChild(labelTag);
+    }
+    console.log(arrayHistoryGame);
 }
 
 
