@@ -5,38 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Game Page</title>
 </head>
 
 <body>
     <nav class="nav-bar">
         <div>
-            <button id="btnHighIdScore"><span>HighScore</span></button>
-        </div>
-        <header>
-            <h1>Welcome to Code Quiz</h1>
-        </header>
-        <div id="timer-run">
-            <div>Timer</div>
+            <div>
+                <button id="btnHighIdScore" class="btn btn-primary btn-xs"><span>HighScore</span></button>
+            </div>
+            <div class="border">
+                <div id="timer-run" class="p-2 bd-highlight">
+                    Timer
+                </div>
+            </div>
         </div>
     </nav>
 
     <div class="title">
+        <header>
+            <h1>Welcome to Code Quiz</h1>
+        </header>
         <div class="card">
-            <p id="paragraph-head">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde harum asperiores
+            <p>Lorem ipsum dolor sit amet consectetur
+                adipisicing elit. Unde harum asperiores
                 veritatis
                 vel
                 molestias
                 modi ipsam aut vitae ad nihil a, placeat ipsa magnam voluptatem, iusto quaerat nulla nesciunt vero.
             </p>
         </div>
-        <div class="startGame">
-            <button id="btnStartGame">Start Game</button>
+        <div>
+            <button id="btnStartGame" class="btn btn-outline-primary">Start Game</button>
         </div>
     </div>
     <div id="question" class="askQuestion"></div>
     <div id="items" class="items">
-
         <ul>
             <div>
                 <li id="option1"></li>
@@ -63,17 +69,18 @@
         <form class="form-add-score">
             <h3>All Done!</h3>
             <h4 id="score-display">Your final score is</h4>
-            <input id="textInput" type="text" placeholder="enter your initial">
-            <button id="button-btn">Submit</button>
+            <!-- <input  type="text" placeholder="enter your initial"> -->
+            <input id="textInput" class="form-control" type="text" placeholder="Default input">
+            <button id="button-btn" class="btn btn-success">Submit</button>
         </form>
     </div>
 
     <div class="container-score hide">
         <div id="title">Show the page history of the games.
             <div id="register"></div>
-            <div class="btn-submit">
-                <button id="submitBackPage">Home page</button>
-                <button id="submitClearHistory">Clear History</button>
+            <div>
+                <button id="submitBackPage" class="btn btn-secondary">Home page</button>
+                <button id="submitClearHistory" class="btn btn-secondary">Clear History</button>
             </div>
         </div>
     </div>

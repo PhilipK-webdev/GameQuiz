@@ -15,7 +15,6 @@ body, html{
 .nav-bar{
 
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     padding: 10px;
 }
@@ -43,9 +42,12 @@ body, html{
     display: flex;
     justify-content: center;
     align-content: center;
-}
+    flex-direction: row !important;
+    border :none !important;
+    margin-top: 30px;
+} 
 
-.card p{
+ .card p{
     width: 250px;
     text-align: center;
 }
@@ -68,10 +70,10 @@ body, html{
     justify-content: center;
     align-content: center;
     margin:0 auto;
-    /* border: 2px solid black; */
-    margin-left: auto;
+    /* border: 2px solid black;  */
+     margin-left: auto;
     width:250px;
-    margin-top: 5px;
+    margin-top: 5px; 
 }
 
 .items{
@@ -94,34 +96,33 @@ li{
     display: inline-block;
 }
 
-.startGame{
+.btn {
 
-    display: flex;
-    justify-content: center;
-    align-content: center;
+    margin-top: 10px !important;
 }
+header{
+    text-decoration: underline;
+    color: rgb(47, 32, 129);
+} 
+.p-2{
+    font-size: 25px;
+    font-family: cursive;
+    text-decoration: underline;
+}  
+.border{
+
+    background-color: rgba(51, 90, 173, 0.712);
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: .25rem;
+}
+
 
 .hide {
     display: none;
 }
-
-
-
-
-/* #title{
-
-    margin-top: 15px;
-    padding: 10px;
-   
-} */
-
-/* .form-save-score{
-
-   
-    border:1px solid black;
-    padding: auto;
-    margin-top: 40px;
-} */
 
 
 

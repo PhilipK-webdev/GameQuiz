@@ -20,7 +20,7 @@ var Questions = [
 var arr = [];
 var userScore = 0;
 var numQuestion = 0;
-var gameSeconds = 60;
+var gameSeconds = 10;
 var question = document.querySelector("#question");
 var option1 = document.querySelector("#option1");
 var option2 = document.querySelector("#option2");
@@ -38,6 +38,8 @@ var btnHomePage = document.querySelector("#submitBackPage");
 var btnHighIdScore = document.querySelector("#btnHighIdScore");;
 var items = document.querySelector("#items");
 var title = document.querySelector("#title");
+var horizon = document.querySelector("#horizon");
+var paragraph = document.querySelector("#paragraph");
 var arrayHistoryGame;
 var flagBtnPress;
 
@@ -111,20 +113,13 @@ function checkStyleElements(flagBtnPress) {
 
 }
 
-
-
-
 btnHomePage.addEventListener("click", function () {
     flagBtnPress = false;
     checkStyleElements(flagBtnPress);
+    btnHighIdScore.disabled = false;
+
 
 });
-
-
-
-
-
-
 
 function startGameQuiz() {
 
@@ -135,6 +130,16 @@ function startGameQuiz() {
             items.classList.remove("hide");
         }
     }
+    option1.textContent = "";
+    option2.textContent = "";
+    option3.textContent = "";
+    option4.textContent = "";
+    question.textContent = "";
+    horizon.classList.add("hide");
+    paragraph.textContent = "";
+
+
+    btnHighIdScore.disabled = true;
     renderID();
     startIntervel();
 
@@ -152,32 +157,6 @@ function renderID() {
         arr[i].addEventListener("click", temp, true);
     }
 }
-// arr[i].removeEventListener("click", temp, true);
-
-
-// checkI = this.getAttribute("data-id");
-// newId = parseInt(checkI);
-
-
-// horizon.classList.remove("hide");
-// if (numQuestion < Questions.length) {
-
-//     console.log(newId);
-
-//     if (Questions[numQuestion].correctAnswer === newId) {
-
-//         paragraph.textContent = "Correct";
-//         userScore += 10;
-//     } else {
-
-//         gameSeconds -= 5;
-//         paragraph.textContent = "Wrong";
-//     }
-//     numQuestion++;
-//     changeTheHTML(numQuestion);
-
-// }
-
 
 var temp = function () {
 
@@ -208,8 +187,6 @@ var temp = function () {
 
 function changeTheHTML(numQuestion) {
 
-    var horizon = document.querySelector("#horizon");
-    var paragraph = document.querySelector("#paragraph");
 
     setTimeout(function () {
 
@@ -242,7 +219,7 @@ function startIntervel() {
 
             clearInterval(gameToPlay);
             scoreDisplya.textContent = "Your final score is " + userScore;
-            timerRun.textContent = "Time";
+            timerRun.textContent = "Timer";
             classChange();
         }
 
