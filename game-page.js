@@ -98,40 +98,71 @@ function renderID() {
     for (var i = 0; i < 4; i++) {
 
         arr[i].setAttribute("data-id", i);
-        console.log(i)
 
-        arr[i].addEventListener("click", function temp() {
+        arr[i].addEventListener("click", temp, true);
+    }
+}
+// arr[i].removeEventListener("click", temp, true);
 
-            console.log(arr);
-            checkI = this.getAttribute("data-id");
-            newId = parseInt(checkI);
-            horizon.classList.remove("hide");
-            if (numQuestion < Questions.length) {
 
-                console.log(newId);
+// checkI = this.getAttribute("data-id");
+// newId = parseInt(checkI);
 
-                if (Questions[numQuestion].correctAnswer === newId) {
 
-                    paragraph.textContent = "Correct";
-                    userScore += 10;
-                } else {
+// horizon.classList.remove("hide");
+// if (numQuestion < Questions.length) {
 
-                    gameSeconds -= 5;
-                    paragraph.textContent = "Wrong";
-                }
-                numQuestion++;
-                changeTheHTML(numQuestion);
+//     console.log(newId);
 
-            }
-            this.removeEventListener("click", temp, true);
+//     if (Questions[numQuestion].correctAnswer === newId) {
 
-        }, true);
+//         paragraph.textContent = "Correct";
+//         userScore += 10;
+//     } else {
+
+//         gameSeconds -= 5;
+//         paragraph.textContent = "Wrong";
+//     }
+//     numQuestion++;
+//     changeTheHTML(numQuestion);
+
+// }
+
+
+
+
+
+
+
+
+
+
+var temp = function () {
+
+    checkI = this.getAttribute("data-id");
+    newId = parseInt(checkI);
+
+
+    horizon.classList.remove("hide");
+    if (numQuestion < Questions.length) {
+
+        console.log(newId);
+
+        if (Questions[numQuestion].correctAnswer === newId) {
+
+            paragraph.textContent = "Correct";
+            userScore += 10;
+        } else {
+
+            gameSeconds -= 5;
+            paragraph.textContent = "Wrong";
+        }
+        numQuestion++;
+        changeTheHTML(numQuestion);
 
     }
-    console.log(arr);
+
 }
-
-
 
 
 
