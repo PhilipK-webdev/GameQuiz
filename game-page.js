@@ -30,7 +30,7 @@ var timerRun = document.querySelector("#timer-run");
 var containerForm = document.querySelector(".container-form");
 var containerScore = document.querySelector(".container-score");
 var scoreDisplya = document.querySelector("#score-display");
-var buttonBtn = document.querySelector("#button-btn");
+var btnSubmit = document.querySelector("#button-btn");
 var textInput = document.querySelector("#textInput");
 var register = document.querySelector("#register");
 var btnStartGame = document.querySelector("#btnStartGame");
@@ -71,44 +71,9 @@ btnStartGame.addEventListener("click", function () {
 });
 
 btnHighIdScore.addEventListener("click", function () {
-
-    console.log("inside of btn high id score");
     flagBtnPress = true;
     checkStyleElements(flagBtnPress);
-
     containerScore.classList.remove("hide");
-
-    // document.querySelector("header").classList.add("hide");
-    // document.querySelector(".card").classList.add("hide");
-    // document.querySelector(".startGame").classList.add("hide");
-    // console.log(x);
-    // if (x === "title ") {
-
-    //     document.querySelector(".title").classList.add("hide");
-
-    //     if (y === "nav-bar") {
-
-    //         document.querySelector(".nav-bar").classList.add("hide");
-    //         if (containerScore.className === "container-score hide") {
-    //             containerScore.classList.remove("hide");
-    //         } else {
-
-    //             containerForm.classList.add("hide");
-    //         }
-    //     } else {
-
-    //         document.querySelector(".nav-bar").classList.remove("hide");
-    //     }
-
-    // } else {
-
-    //     document.querySelector(".title").classList.remove("hide");
-    // }
-
-    // // timerRun.classList.add("hide");
-    // btnHighIdScore.classList.add("hide");
-
-
 });
 
 
@@ -117,62 +82,31 @@ function checkStyleElements(flagBtnPress) {
 
 
     var z = document.querySelector(".title").getAttribute("class");
-    console.log(z);
     var x = containerScore.getAttribute("class");
     var y = document.querySelector(".nav-bar").getAttribute("class");
-
-    // console.log(containerForm.getAttribute("class"));
-
-    console.log(btnHighIdScore.getAttribute("class"));
-    console.log(btnHomePage.getAttribute("class"));
 
     if (flagBtnPress) {
 
         console.log(flagBtnPress);
         if (z === "title") {
-            console.log("20202020020202020");
-            document.querySelector(".title").classList.add("hide");
-            console.log(z + " after change");
-        }
-        // if (z === "title hide ") {
 
-        //     document.querySelector(".title").classList.remove("hide");
-        // }
+            document.querySelector(".title").classList.add("hide");
+
+        }
 
         if (y === "nav-bar") {
 
             document.querySelector(".nav-bar").classList.add("hide");
-            console.log(y + " after change");
-        } else {
-
-            document.querySelector(".nav-bar").classList.remove("hide");
-            console.log(y + " after change");
         }
 
     } else {
 
-        console.log(flagBtnPress);
+
         document.querySelector(".title").classList.remove("hide");
         document.querySelector(".nav-bar").classList.remove("hide");
+        containerForm.classList.add("hide");
         containerScore.classList.add("hide");
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
@@ -181,50 +115,8 @@ function checkStyleElements(flagBtnPress) {
 
 
 btnHomePage.addEventListener("click", function () {
-    console.log("inside of btn home page");
     flagBtnPress = false;
     checkStyleElements(flagBtnPress);
-    // document.querySelector(".nav-bar").style.display = "flex";
-    // document.querySelector("header").style.display = "block";
-    // document.querySelector(".card").style.display = "flex";
-    // btnStartGame.classList.remove("hide");
-    // document.querySelector(".container-score").classList.add("hide");
-
-    // var x = document.querySelector(".title").getAttribute("class");
-    // var y = document.querySelector(".nav-bar").getAttribute("class");
-    // // document.querySelector("header").classList.add("hide");
-    // // document.querySelector(".card").classList.add("hide");
-    // // document.querySelector(".startGame").classList.add("hide");
-    // console.log(x);
-    // if (x === "title ") {
-
-    //     document.querySelector(".title").classList.add("hide");
-    //     console.log(y);
-    //     if (y === "nav-bar") {
-
-    //         document.querySelector(".nav-bar").classList.add("hide");
-    //     }
-
-    // } else {
-
-    //     document.querySelector(".title").classList.remove("hide");
-    //     document.querySelector(".nav-bar").classList.remove("hide");
-    //     btnHighIdScore.classList.remove("hide");
-    //     containerForm.classList.add("hide");
-    //     if (containerScore.className === "container-score hide") {
-    //         containerScore.classList.remove("hide");
-    //     } else {
-
-    //         containerScore.classList.add("hide");
-    //     }
-
-
-
-    // }
-
-    // // timerRun.classList.add("hide");
-
-
 
 });
 
@@ -236,24 +128,13 @@ btnHomePage.addEventListener("click", function () {
 
 function startGameQuiz() {
 
-    var temp;
-    btnStartGame.classList.add("hide");
-    document.querySelector("header").classList.add("hide");
-    document.querySelector(".card").classList.add("hide");
-    document.querySelector(".container-score").classList.add("hide");
-    if (items.className === "items hide") {
-
-        console.log(items.className);
-        items.classList.remove("hide");
-    }
-
-    temp = question.className;
-    if (temp === "askQuestion hide") {
-
-
+    document.querySelector(".title").classList.add("hide");
+    if (question.className === "askQuestion hide") {
         question.classList.remove("hide");
+        if (items.className === "items hide") {
+            items.classList.remove("hide");
+        }
     }
-
     renderID();
     startIntervel();
 
@@ -298,14 +179,6 @@ function renderID() {
 // }
 
 
-
-
-
-
-
-
-
-
 var temp = function () {
 
     checkI = this.getAttribute("data-id");
@@ -332,12 +205,6 @@ var temp = function () {
     }
 
 }
-
-console.log(temp);
-
-
-
-
 
 function changeTheHTML(numQuestion) {
 
@@ -382,8 +249,21 @@ function startIntervel() {
     }, 1000)
 }
 
-buttonBtn.addEventListener("click", function (event) {
 
+function classChange() {
+
+    if (containerForm.className === "container-form hide") {
+
+        containerForm.classList.remove("hide");
+    }
+    question.classList.add("hide");
+    items.classList.add("hide");
+    numQuestion = 0;
+    userScore = 0;
+    gameSeconds = 60;
+}
+
+btnSubmit.addEventListener("click", function (event) {
 
     event.preventDefault();
     arrayHistoryGame.push(textInput.value);
@@ -398,9 +278,23 @@ function showHighScore() {
 
     if (containerForm.className === "container-form") {
         containerForm.classList.add("hide");
+    } else {
+
+        containerForm.classList.add("hide");
     }
-    document.querySelector(".container-score").setAttribute("class", "container-score");
-    document.querySelector("nav").style.display = "none";
+    if (containerScore.className === "container-score hide") {
+        containerScore.classList.remove("hide");
+    } else {
+        containerScore.classList.add("hide");
+    }
+
+    var nav = document.querySelector(".nav-bar");
+
+    if (nav.className === "nav-bar") {
+        nav.classList.add("hide");
+    } else {
+        nav.classList.remove("hide");
+    }
 
 }
 
@@ -430,20 +324,6 @@ if (!Array.isArray(arrayHistoryGame)) {
 
 
 
-function classChange() {
-
-    if (containerForm.className === "container-form hide") {
-
-        containerForm.classList.remove("hide");
-    }
-    question.classList.add("hide");
-    items.classList.add("hide");
-    numQuestion = 0;
-    userScore = 0;
-    gameSeconds = 60;
-
-
-}
 
 
 
