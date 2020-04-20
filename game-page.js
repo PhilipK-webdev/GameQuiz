@@ -28,6 +28,7 @@ var option3 = document.querySelector("#option3");
 var option4 = document.querySelector("#option4");
 var timerRun = document.querySelector("#timer-run");
 var containerForm = document.querySelector(".container-form");
+var containerScore = document.querySelector(".container-score");
 var scoreDisplya = document.querySelector("#score-display");
 var buttonBtn = document.querySelector("#button-btn");
 var textInput = document.querySelector("#textInput");
@@ -43,8 +44,39 @@ var arrayHistoryGame;
 
 
 
-document.querySelector(".container-score").classList.add("hide");
-containerForm.classList.add("hide");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 btnStartGame.addEventListener("click", function () {
 
@@ -57,7 +89,9 @@ btnHighIdScore.addEventListener("click", function () {
     document.querySelector("header").classList.add("hide");
     document.querySelector(".card").classList.add("hide");
     document.querySelector(".startGame").classList.add("hide");
-    document.querySelector(".container-score").classList.remove("hide");
+    if (containerScore.className === "container-score hide") {
+        containerScore.classList.remove("hide");
+    }
     timerRun.classList.add("hide");
     btnHighIdScore.classList.add("hide");
 
@@ -98,7 +132,6 @@ function renderID() {
     for (var i = 0; i < 4; i++) {
 
         arr[i].setAttribute("data-id", i);
-
         arr[i].addEventListener("click", temp, true);
     }
 }
@@ -164,6 +197,8 @@ var temp = function () {
 
 }
 
+console.log(temp);
+
 
 
 
@@ -225,9 +260,12 @@ buttonBtn.addEventListener("click", function (event) {
 
 function showHighScore() {
 
+    if (containerForm.className === "container-form") {
+        containerForm.classList.add("hide");
+    }
     document.querySelector(".container-score").setAttribute("class", "container-score");
     document.querySelector("nav").style.display = "none";
-    containerForm.classList.add("hide");
+
 }
 
 function renderPlayerNames() {
@@ -267,16 +305,15 @@ submitBackPage.addEventListener("click", function () {
 
 function classChange() {
 
-    containerForm.setAttribute("class", "container-form");
+    if (containerForm.className === "container-form hide") {
+
+        containerForm.classList.remove("hide");
+    }
     question.classList.add("hide");
     items.classList.add("hide");
     numQuestion = 0;
     userScore = 0;
     gameSeconds = 60;
-
-
-
-
 }
 
 
