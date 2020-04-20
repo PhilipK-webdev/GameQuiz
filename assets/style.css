@@ -43,8 +43,6 @@ body, html{
     display: flex;
     justify-content: center;
     align-content: center;
-    
-    
 }
 
 .card p{
@@ -102,11 +100,6 @@ li{
     justify-content: center;
     align-content: center;
 }
-
-
-/* .display {
-    display: flex;
-} */
 
 .hide {
     display: none;

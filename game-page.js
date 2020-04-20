@@ -34,26 +34,12 @@ var buttonBtn = document.querySelector("#button-btn");
 var textInput = document.querySelector("#textInput");
 var register = document.querySelector("#register");
 var btnStartGame = document.querySelector("#btnStartGame");
-var submitBackPage = document.querySelector("#submitBackPage");
-var btnHighIdScore = document.querySelector("#btnHighIdScore");
-var submitBackPage = document.querySelector("#submitBackPage");
+var btnHomePage = document.querySelector("#submitBackPage");
+var btnHighIdScore = document.querySelector("#btnHighIdScore");;
 var items = document.querySelector("#items");
 var title = document.querySelector("#title");
 var arrayHistoryGame;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+var flagBtnPress;
 
 
 
@@ -86,17 +72,167 @@ btnStartGame.addEventListener("click", function () {
 
 btnHighIdScore.addEventListener("click", function () {
 
-    document.querySelector("header").classList.add("hide");
-    document.querySelector(".card").classList.add("hide");
-    document.querySelector(".startGame").classList.add("hide");
-    if (containerScore.className === "container-score hide") {
-        containerScore.classList.remove("hide");
-    }
-    timerRun.classList.add("hide");
-    btnHighIdScore.classList.add("hide");
+    console.log("inside of btn high id score");
+    flagBtnPress = true;
+    checkStyleElements(flagBtnPress);
+
+    containerScore.classList.remove("hide");
+
+    // document.querySelector("header").classList.add("hide");
+    // document.querySelector(".card").classList.add("hide");
+    // document.querySelector(".startGame").classList.add("hide");
+    // console.log(x);
+    // if (x === "title ") {
+
+    //     document.querySelector(".title").classList.add("hide");
+
+    //     if (y === "nav-bar") {
+
+    //         document.querySelector(".nav-bar").classList.add("hide");
+    //         if (containerScore.className === "container-score hide") {
+    //             containerScore.classList.remove("hide");
+    //         } else {
+
+    //             containerForm.classList.add("hide");
+    //         }
+    //     } else {
+
+    //         document.querySelector(".nav-bar").classList.remove("hide");
+    //     }
+
+    // } else {
+
+    //     document.querySelector(".title").classList.remove("hide");
+    // }
+
+    // // timerRun.classList.add("hide");
+    // btnHighIdScore.classList.add("hide");
 
 
 });
+
+
+function checkStyleElements(flagBtnPress) {
+
+
+
+    var z = document.querySelector(".title").getAttribute("class");
+    console.log(z);
+    var x = containerScore.getAttribute("class");
+    var y = document.querySelector(".nav-bar").getAttribute("class");
+
+    // console.log(containerForm.getAttribute("class"));
+
+    console.log(btnHighIdScore.getAttribute("class"));
+    console.log(btnHomePage.getAttribute("class"));
+
+    if (flagBtnPress) {
+
+        console.log(flagBtnPress);
+        if (z === "title") {
+            console.log("20202020020202020");
+            document.querySelector(".title").classList.add("hide");
+            console.log(z + " after change");
+        }
+        // if (z === "title hide ") {
+
+        //     document.querySelector(".title").classList.remove("hide");
+        // }
+
+        if (y === "nav-bar") {
+
+            document.querySelector(".nav-bar").classList.add("hide");
+            console.log(y + " after change");
+        } else {
+
+            document.querySelector(".nav-bar").classList.remove("hide");
+            console.log(y + " after change");
+        }
+
+    } else {
+
+        console.log(flagBtnPress);
+        document.querySelector(".title").classList.remove("hide");
+        document.querySelector(".nav-bar").classList.remove("hide");
+        containerScore.classList.add("hide");
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+btnHomePage.addEventListener("click", function () {
+    console.log("inside of btn home page");
+    flagBtnPress = false;
+    checkStyleElements(flagBtnPress);
+    // document.querySelector(".nav-bar").style.display = "flex";
+    // document.querySelector("header").style.display = "block";
+    // document.querySelector(".card").style.display = "flex";
+    // btnStartGame.classList.remove("hide");
+    // document.querySelector(".container-score").classList.add("hide");
+
+    // var x = document.querySelector(".title").getAttribute("class");
+    // var y = document.querySelector(".nav-bar").getAttribute("class");
+    // // document.querySelector("header").classList.add("hide");
+    // // document.querySelector(".card").classList.add("hide");
+    // // document.querySelector(".startGame").classList.add("hide");
+    // console.log(x);
+    // if (x === "title ") {
+
+    //     document.querySelector(".title").classList.add("hide");
+    //     console.log(y);
+    //     if (y === "nav-bar") {
+
+    //         document.querySelector(".nav-bar").classList.add("hide");
+    //     }
+
+    // } else {
+
+    //     document.querySelector(".title").classList.remove("hide");
+    //     document.querySelector(".nav-bar").classList.remove("hide");
+    //     btnHighIdScore.classList.remove("hide");
+    //     containerForm.classList.add("hide");
+    //     if (containerScore.className === "container-score hide") {
+    //         containerScore.classList.remove("hide");
+    //     } else {
+
+    //         containerScore.classList.add("hide");
+    //     }
+
+
+
+    // }
+
+    // // timerRun.classList.add("hide");
+
+
+
+});
+
+
+
+
+
+
 
 function startGameQuiz() {
 
@@ -289,16 +425,7 @@ if (!Array.isArray(arrayHistoryGame)) {
     arrayHistoryGame = JSON.parse(window.localStorage.getItem("toDo"));
 }
 
-submitBackPage.addEventListener("click", function () {
 
-    document.querySelector(".nav-bar").style.display = "flex";
-    document.querySelector("header").style.display = "block";
-    document.querySelector(".card").style.display = "flex";
-    btnStartGame.classList.remove("hide");
-    document.querySelector(".container-score").classList.add("hide");
-
-
-});
 
 
 
@@ -314,6 +441,8 @@ function classChange() {
     numQuestion = 0;
     userScore = 0;
     gameSeconds = 60;
+
+
 }
 
 
