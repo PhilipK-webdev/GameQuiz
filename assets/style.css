@@ -65,15 +65,14 @@ body, html{
 }
 
 .askQuestion{
-
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin:0 auto;
-    /* border: 2px solid black;  */
-     margin-left: auto;
-    width:250px;
-    margin-top: 5px; 
+ 
+    text-align: center;
+    /* border: 2px solid black;  */ 
+}
+.list-group-item{
+    
+    background-color: burlywood !important;
+    color:blue !important;
 }
 
 .items{
@@ -83,6 +82,7 @@ body, html{
     margin-right: 40px;
     
 }
+
 
 li{
     width: 250px;

@@ -130,6 +130,13 @@ function startGameQuiz() {
             items.classList.remove("hide");
         }
     }
+    document.querySelector("ul").classList.add("list-group");
+    question.classList.add("list-group-item");
+    option1.classList.add("list-group-item");
+    option2.classList.add("list-group-item");
+    option3.classList.add("list-group-item");
+    option4.classList.add("list-group-item");
+    option1.classList.add("list-group-item");
     option1.textContent = "";
     option2.textContent = "";
     option3.textContent = "";
@@ -234,6 +241,7 @@ function classChange() {
         containerForm.classList.remove("hide");
     }
     question.classList.add("hide");
+    question.classList.remove("list-group-item");
     items.classList.add("hide");
     numQuestion = 0;
     userScore = 0;
