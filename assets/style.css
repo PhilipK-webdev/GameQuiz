@@ -29,7 +29,6 @@ body, html{
     padding: auto;
    
 }
-/* style for class = .title */
 .title{
 
     display: flex;
@@ -92,9 +91,9 @@ li{
     text-align: center;
 }
 
-hr{
+.horizon{
     margin-top: 20px;
-    display: none;
+    display: inline-block;
 }
 
 .startGame{

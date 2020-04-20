@@ -13,7 +13,6 @@
         <div>
             <button id="btnHighIdScore"><span>HighScore</span></button>
         </div>
-
         <header>
             <h1>Welcome to Code Quiz</h1>
         </header>
@@ -22,22 +21,7 @@
         </div>
     </nav>
 
-    <div class="container-score">
-        <div id="title">Show the page history of the games.
-            <div id="register"></div>
-            <div class="btn-submit">
-                <button id="submitBackPage">Home page</button>
-                <button id="submitClearHistory">Clear History</button>
-            </div>
-        </div>
-
-
-    </div>
-
-
-    <!-- make new class style .title -->
     <div class="title">
-        <!-- -->
         <div class="card">
             <p id="paragraph-head">Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde harum asperiores
                 veritatis
@@ -46,9 +30,22 @@
                 modi ipsam aut vitae ad nihil a, placeat ipsa magnam voluptatem, iusto quaerat nulla nesciunt vero.
             </p>
         </div>
+        <div class="startGame">
+            <button id="btnStartGame">Start Game</button>
+        </div>
     </div>
+    <div id="question" class="askQuestion"></div>
+    <div id="items" class="items">
 
-
+        <ul>
+            <li id="option1"></li>
+            <li id="option2"></li>
+            <li id="option3"></li>
+            <li id="option4"></li>
+            <hr id="horizon" class="hide">
+            <p id="paragraph"></p>
+        </ul>
+    </div>
 
     <div class="container-form">
         <form class="form-add-score">
@@ -59,22 +56,21 @@
         </form>
     </div>
 
-
-    <div id="question" class="askQuestion"></div>
-    <div id="items" class="items">
-        <ul>
-            <li id="option1"></li>
-            <li id="option2"></li>
-            <li id="option3"></li>
-            <li id="option4"></li>
-            <hr id="horizon">
-            <p id="paragraph"></p>
-        </ul>
+    <div class="container-score">
+        <div id="title">Show the page history of the games.
+            <div id="register"></div>
+            <div class="btn-submit">
+                <button id="submitBackPage">Home page</button>
+                <button id="submitClearHistory">Clear History</button>
+            </div>
+        </div>
     </div>
 
-    <div class="startGame">
-        <button id="btnStartGame">Start Game</button>
-    </div>
+
+
+
+
+
 
     <script src="./game-page.js" type="text/javascript"></script>
 </body>
