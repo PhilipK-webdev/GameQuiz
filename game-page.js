@@ -17,6 +17,12 @@ var Questions = [
     }
 ];
 
+var Player = {
+
+    name: "Philip",
+    score: 0
+};
+
 var arr = [];
 var userScore = 0;
 var numQuestion = 0;
@@ -244,7 +250,6 @@ function classChange() {
     question.classList.remove("list-group-item");
     items.classList.add("hide");
     numQuestion = 0;
-    userScore = 0;
     gameSeconds = 60;
 }
 
@@ -288,7 +293,7 @@ function renderPlayerNames() {
     var arrayNames = JSON.parse(window.localStorage.getItem("names"));
     for (var i = 0; i < arrayNames.length; i++) {
 
-        var labelTag = document.createElement("lable");
+        var labelTag = document.createElement("li");
         labelTag.textContent = arrayNames[i];
         labelTag.setAttribute("data-id", i);
         register.appendChild(labelTag);
