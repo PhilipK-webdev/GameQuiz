@@ -17,12 +17,7 @@ var Questions = [
     }
 ];
 
-var Player = {
-
-    name: "Philip",
-    score: 0
-};
-
+var index = 0;
 var arr = [];
 var userScore = 0;
 var numQuestion = 0;
@@ -46,7 +41,7 @@ var items = document.querySelector("#items");
 var title = document.querySelector("#title");
 var horizon = document.querySelector("#horizon");
 var paragraph = document.querySelector("#paragraph");
-var arrayHistoryGame;
+var arrayHistoryGame = [];
 var flagBtnPress;
 
 btnStartGame.addEventListener("click", function () {
@@ -59,6 +54,12 @@ btnHighIdScore.addEventListener("click", function () {
     flagBtnPress = true;
     checkStyleElements(flagBtnPress);
     containerScore.classList.remove("hide");
+    // arrayHistoryGame = JSON.parse(window.localStorage.getItem("names"));
+    console.log("11111111111111111111111111111111")
+    arrayHistoryGame = JSON.parse(window.localStorage.getItem("names"));
+
+
+    console.log(arrayHistoryGame);
 });
 
 
@@ -125,7 +126,7 @@ function startGameQuiz() {
     question.textContent = "";
     horizon.classList.add("hide");
     paragraph.textContent = "";
-
+    userScore = 0;
 
     btnHighIdScore.disabled = true;
     renderID();
@@ -253,10 +254,11 @@ function checkInput() {
     } else {
 
         textInput.value = "";
-        arrayHistoryGame.push(input);
-        window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
+
+
+        console.log("inside of Local Storage");
         showHighScore();
-        renderPlayerNames();
+        renderPlayerNames(input, userScore);
     }
 }
 
@@ -284,26 +286,46 @@ function showHighScore() {
 
 }
 
-function renderPlayerNames() {
+function renderPlayerNames(input, userScore) {
+    console.log(userScore + " before creating player object");
+    var Player = {
+
+        name: input.trim(),
+        score: userScore
+    };
+
+    console.log(Player.score);
+
+
+    arrayHistoryGame.push(Player);
+
+    window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
+
+    arrayHistoryGame = JSON.parse(window.localStorage.getItem("names"));
+
+    console.log(arrayHistoryGame + "array of the history game ");
 
     var arrayNames = JSON.parse(window.localStorage.getItem("names"));
-    for (var i = 0; i < arrayNames.length; i++) {
+    console.log(arrayNames + "new array that was create");
+    var labelTag = document.createElement("li");
+    labelTag.setAttribute("data-id", index);
 
-        var labelTag = document.createElement("li");
-        labelTag.textContent = arrayNames[i];
-        labelTag.setAttribute("data-id", i);
-        register.appendChild(labelTag);
-    }
+    labelTag.textContent = arrayNames[index].name + " " + arrayNames[index].score;
 
+    console.log(labelTag.getAttribute("data-id"));
+    // console.log(i + " this is i ");
+    register.appendChild(labelTag);
+    index++;
 }
 
-if (!Array.isArray(arrayHistoryGame)) {
+// if (Array.isArray(arrayHistoryGame)) {
 
-    arrayHistoryGame = [];
-} else {
-    console.log("IM HERERERERERER");
-    arrayHistoryGame = JSON.parse(window.localStorage.getItem("toDo"));
-}
+//     arrayHistoryGame = [];
+//     console.log("EMPTYYYY");
+// } else {
+//     console.log("IM HERERERERERER");
+//     arrayHistoryGame = JSON.parse(window.localStorage.getItem("names"));
+// }
 
 
 
