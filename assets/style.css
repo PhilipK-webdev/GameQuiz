@@ -80,6 +80,7 @@ body, html{
     display: flex;
     justify-content: center;
     margin-right: 40px;
+    text-align: right;
     
 }
 
@@ -88,7 +89,7 @@ li{
     width: 250px;
     /* border:2px solid black; */
     list-style-type: none;
-    text-align: center;
+    text-align: left;
 }
 
 .horizon{
@@ -117,6 +118,9 @@ header{
     text-align: center;
     margin-top: 10px;
     border-radius: .25rem;
+}
+#paragraph{
+    text-align: left;
 }
 
 
