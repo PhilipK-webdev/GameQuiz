@@ -10,6 +10,7 @@ body, html{
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: grid;
+    background-color: rgb(152, 180, 167) !important;
 }
 
 .nav-bar{
@@ -44,6 +45,7 @@ body, html{
     align-content: center;
     flex-direction: row !important;
     border :none !important;
+    background-color: rgb(152, 180, 167) !important;
     margin-top: 30px;
 } 
 
@@ -69,9 +71,12 @@ body, html{
     text-align: center;
     /* border: 2px solid black;  */ 
 }
+.askQuestion:hover{
+    color: lightblue;
+    cursor: pointer;
+}
 .list-group-item{
     
-    background-color: burlywood !important;
     color:blue !important;
 }
 
@@ -91,6 +96,10 @@ li{
     list-style-type: none;
     text-align: left;
 }
+li:hover {
+    color: lightblue;
+    cursor: pointer;
+  }
 
 .horizon{
     margin-top: 20px;
@@ -127,7 +136,10 @@ header{
 .hide {
     display: none;
 }
-
+hr{
+    background-color: yellow;
+    border:none;
+}
 
 
 
