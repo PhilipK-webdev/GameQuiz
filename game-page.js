@@ -231,13 +231,34 @@ function classChange() {
 btnSubmit.addEventListener("click", function (event) {
 
     event.preventDefault();
-    arrayHistoryGame.push(textInput.value);
-    textInput.value = "";
-    window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
-    showHighScore();
-    renderPlayerNames();
+    var input;
+    checkInput();
+
+    // arrayHistoryGame.push(textInput.value);
+    // window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
+    // showHighScore();
+    // renderPlayerNames();
 
 });
+
+function checkInput() {
+
+    input = textInput.value;
+
+    if (input === "" || !isNaN(input)) {
+        console.log(input);
+        alert("Wrong input, Try again");
+        textInput.value = "";
+
+    } else {
+
+        textInput.value = "";
+        arrayHistoryGame.push(input);
+        window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
+        showHighScore();
+        renderPlayerNames();
+    }
+}
 
 function showHighScore() {
 
