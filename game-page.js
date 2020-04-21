@@ -49,29 +49,6 @@ var paragraph = document.querySelector("#paragraph");
 var arrayHistoryGame;
 var flagBtnPress;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 btnStartGame.addEventListener("click", function () {
 
     startGameQuiz();
@@ -86,8 +63,6 @@ btnHighIdScore.addEventListener("click", function () {
 
 
 function checkStyleElements(flagBtnPress) {
-
-
 
     var z = document.querySelector(".title").getAttribute("class");
     var x = containerScore.getAttribute("class");
