@@ -76,15 +76,9 @@ window.onload = function () {
 
         if (window.localStorage.getItem("names")) {
 
-            register.innerHTML = "";
-            arrayNames = JSON.parse(window.localStorage.getItem("names"));
-            for (var i = 0; i < arrayNames.length; i++) {
 
-                var labelTag = document.createElement("li");
-                labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
-                labelTag.setAttribute("data-id", i);
-                register.appendChild(labelTag);
-            }
+            generateElement();
+
         }
     });
 
@@ -308,33 +302,41 @@ window.onload = function () {
             name: input.trim(),
             score: userScore
         };
-        console.log(arrayHistoryGame);
+
         arrayHistoryGame.push(Player);
         textInput.value = "";
         window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
-        register.innerHTML = "";
-        arrayNames = JSON.parse(window.localStorage.getItem("names"));
-        for (var i = 0; i < arrayNames.length; i++) {
-
-            var labelTag = document.createElement("li");
-            labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
-            labelTag.setAttribute("data-id", i);
-            register.appendChild(labelTag);
-        }
+        generateElement();
     }
 
     btnClearHistory.addEventListener("click", function () {
 
         window.localStorage.removeItem("names");
-        console.log("remove");
         arrayHistoryGame = [];
         while (register.firstChild) {
             register.removeChild(register.firstChild);
         }
     });
+}
 
+function generateElement() {
 
+    register.innerHTML = "";
+    arrayNames = JSON.parse(window.localStorage.getItem("names"));
+    var pq = arrayNames.sort(function () {
 
+        if (arrayNames[0].score < arrayNames[1].score) {
+            return -1;
+        }
+    });
+    console.log(pq);
+    for (var i = 0; i < arrayNames.length; i++) {
+
+        var labelTag = document.createElement("li");
+        labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
+        labelTag.setAttribute("data-id", i);
+        register.appendChild(labelTag);
+    }
 }
 
 
@@ -344,7 +346,13 @@ window.onload = function () {
 
 
 
+// register.innerHTML = "";
+            // arrayNames = JSON.parse(window.localStorage.getItem("names"));
+            // for (var i = 0; i < arrayNames.length; i++) {
 
-
-
+            //     var labelTag = document.createElement("li");
+            //     labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
+            //     labelTag.setAttribute("data-id", i);
+            //     register.appendChild(labelTag);
+            // }
 
