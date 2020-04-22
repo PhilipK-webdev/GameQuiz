@@ -2,7 +2,7 @@ var flagBtnPress;
 var arrayHistoryGame;
 var userScore = 0;
 var numQuestion = 0;
-var gameSeconds = 10;
+var gameSeconds = 60;
 var question = document.querySelector("#question");
 var option1 = document.querySelector("#option1");
 var option2 = document.querySelector("#option2");
@@ -26,20 +26,41 @@ var paragraph = document.querySelector("#paragraph");
 var Questions = [
 
     {
-        question: "First Question ",
-        answers: ["assignment to varieble", "compare between the objects", "doesnt have any meaning ", "all wrong"],
+        question: "The Olympics are held every how many years?",
+        answers: ["4 years", "5 years", "3 years", "2 years"],
         correctAnswer: 0
     },
     {
-        question: "Second Question",
-        answers: ["2222222222", "2222222222222222s", "22222222222222222 ", "22222222222"],
+        question: "In American Football, a touchdown is worth how many points?",
+        answers: ["7 points ", "6 points", "8 points ", "5 points"],
         correctAnswer: 1
     },
     {
-        question: "Third Question ",
-        answers: ["333333333", "3333333333333", "33333333333", "333333333333333"],
+        question: "How many players are on a baseball team? ",
+        answers: ["8 players", "10 players", "11 players", "9 players"],
+        correctAnswer: 3
+    },
+    {
+        question: "What was Wilt Chamberlain’s record for most points in a single game? ",
+        answers: ["98 points", "100 points", "99 points", "101 points"],
+        correctAnswer: 1
+    },
+    {
+        question: "How many seasons did Michael Jordan play with the Chicago Bulls before going back into the game with the Wizards?",
+        answers: ["13 seasons", "12 seasons", "11 seasons", "14 seasons"],
+        correctAnswer: 0
+    },
+    {
+        question: "What is the only country to have played in every single soccer World Cup?",
+        answers: ["Argentina", "Germany", "Brazil", "France"],
+        correctAnswer: 2
+    },
+    {
+        question: "How many personal fouls does a player get to be ejected from an NBA basketball game?",
+        answers: ["4 personal fouls", "5 personal fouls", "7 personal fouls", "6 personal fouls"],
         correctAnswer: 3
     }
+
 ];
 
 // window.onload = function () {
@@ -76,59 +97,6 @@ btnStartGame.addEventListener("click", function () {
     startGameQuiz();
 });
 
-btnHighIdScore.addEventListener("click", function () {
-
-    flagBtnPress = true;
-    checkStyleElements(flagBtnPress);
-    containerScore.classList.remove("hide");
-
-    if (window.localStorage.getItem("names")) {
-
-
-        generateElement();
-
-    }
-});
-
-
-function checkStyleElements(flagBtnPress) {
-
-    var z = document.querySelector(".title").getAttribute("class");
-    var x = containerScore.getAttribute("class");
-    var y = document.querySelector(".nav-bar").getAttribute("class");
-
-    if (flagBtnPress) {
-
-        console.log(flagBtnPress);
-        if (z === "title") {
-
-            document.querySelector(".title").classList.add("hide");
-
-        }
-
-        if (y === "nav-bar") {
-
-            document.querySelector(".nav-bar").classList.add("hide");
-        }
-
-    } else {
-
-
-        document.querySelector(".title").classList.remove("hide");
-        document.querySelector(".nav-bar").classList.remove("hide");
-        containerForm.classList.add("hide");
-        containerScore.classList.add("hide");
-    }
-
-
-}
-
-btnHomePage.addEventListener("click", function () {
-    flagBtnPress = false;
-    checkStyleElements(flagBtnPress);
-    btnHighIdScore.disabled = false;
-});
-
 function startGameQuiz() {
 
     document.querySelector(".title").classList.add("hide");
@@ -153,7 +121,6 @@ function startGameQuiz() {
     horizon.classList.add("hide");
     paragraph.textContent = "";
     userScore = 0;
-
     btnHighIdScore.disabled = true;
     renderID();
     startIntervel();
@@ -199,6 +166,24 @@ var temp = function () {
     }
 
 }
+function startIntervel() {
+
+
+    var gameToPlay = setInterval(function () {
+
+        gameSeconds--;
+        timerRun.textContent = "Time: " + gameSeconds;
+
+        if (gameSeconds <= 0 || numQuestion > Questions.length - 1) {
+
+            clearInterval(gameToPlay);
+            scoreDisplya.textContent = "Your final score is " + userScore;
+            timerRun.textContent = "Timer";
+            classChange();
+        }
+
+    }, 1000)
+}
 
 function changeTheHTML(numQuestion) {
 
@@ -222,26 +207,6 @@ function changeTheHTML(numQuestion) {
 
 }
 
-function startIntervel() {
-
-
-    var gameToPlay = setInterval(function () {
-
-        gameSeconds--;
-        timerRun.textContent = "Time: " + gameSeconds;
-
-        if (gameSeconds <= 0 || numQuestion > Questions.length - 1) {
-
-            clearInterval(gameToPlay);
-            scoreDisplya.textContent = "Your final score is " + userScore;
-            timerRun.textContent = "Timer";
-            classChange();
-        }
-
-    }, 1000)
-}
-
-
 function classChange() {
 
     if (containerForm.className === "container-form hide") {
@@ -255,6 +220,58 @@ function classChange() {
     gameSeconds = 60;
 }
 
+
+btnHighIdScore.addEventListener("click", function () {
+
+    flagBtnPress = true;
+    checkStyleElements(flagBtnPress);
+    containerScore.classList.remove("hide");
+
+    if (window.localStorage.getItem("names")) {
+        generateElement();
+    }
+});
+
+
+function checkStyleElements(flagBtnPress) {
+
+    var z = document.querySelector(".title").getAttribute("class");
+    var x = containerScore.getAttribute("class");
+    var y = document.querySelector(".nav-bar").getAttribute("class");
+
+    if (flagBtnPress) {
+
+        console.log(flagBtnPress);
+        if (z === "title") {
+
+            document.querySelector(".title").classList.add("hide");
+
+        }
+
+        if (y === "nav-bar") {
+
+            document.querySelector(".nav-bar").classList.add("hide");
+        }
+
+    } else {
+
+
+        document.querySelector(".title").classList.remove("hide");
+        document.querySelector(".nav-bar").classList.remove("hide");
+        containerForm.classList.add("hide");
+        containerScore.classList.add("hide");
+    }
+
+
+}
+
+btnHomePage.addEventListener("click", function () {
+    flagBtnPress = false;
+    checkStyleElements(flagBtnPress);
+    btnHighIdScore.disabled = false;
+});
+
+
 btnSubmit.addEventListener("click", function (event) {
 
     event.preventDefault();
@@ -266,13 +283,12 @@ function checkInput() {
 
     input = textInput.value;
 
-    if (input === "" || !isNaN(input)) {
+    if (input === "" || !isNaN(input) || input.length > 2 || input.length < 1) {
         console.log(input);
         alert("Wrong input, Try again");
         textInput.value = "";
 
     } else {
-
 
         showHighScore();
         renderPlayerNames(input, userScore);
@@ -307,12 +323,9 @@ function renderPlayerNames(input, userScore) {
 
     var Player = {
 
-        name: input.trim(),
+        name: input.toUpperCase(),
         score: userScore
     };
-
-
-
 
     arrayHistoryGame.push(Player);
     textInput.value = "";
