@@ -92,7 +92,14 @@ function setArray() {
 // }
 // }
 
+if (gameSeconds < 25) {
+
+    alert("Not enouth time to play the game" + "\n set new Timer ");
+    btnStartGame.disabled = true;
+}
+
 btnStartGame.addEventListener("click", function () {
+
 
     startGameQuiz();
 });
