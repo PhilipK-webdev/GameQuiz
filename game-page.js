@@ -311,6 +311,9 @@ function renderPlayerNames(input, userScore) {
         score: userScore
     };
 
+
+
+
     arrayHistoryGame.push(Player);
     textInput.value = "";
     window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
@@ -331,6 +334,10 @@ function generateElement() {
     register.innerHTML = "";
     arrayNames = JSON.parse(window.localStorage.getItem("names"));
 
+    arrayNames.sort(function (a, b) {
+        return b.score - a.score;
+    });
+    console.log(arrayNames);
     for (var i = 0; i < arrayNames.length; i++) {
 
         var labelTag = document.createElement("li");
