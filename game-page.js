@@ -41,25 +41,75 @@ var items = document.querySelector("#items");
 var title = document.querySelector("#title");
 var horizon = document.querySelector("#horizon");
 var paragraph = document.querySelector("#paragraph");
-var arrayHistoryGame = [];
+
 var flagBtnPress;
+var arrayHistoryGame;
+
+
+window.onload = function () {
+    arrayHistoryGame = JSON.parse(localStorage.getItem("names")); //get data from storage
+
+    if (arrayHistoryGame !== null) { //if data exist (todos are in storage)
+        for (var i = 0; i < arrayHistoryGame.length; i++) {
+
+            var labelTag = document.createElement("li");
+            labelTag.textContent = arrayHistoryGame[i].name + " " + arrayHistoryGame[i].score;
+            labelTag.setAttribute("data-id", i);
+            register.appendChild(labelTag);
+        }
+    } else { //if nothing exist in storage, keep todos array empty
+        arrayHistoryGame = [];
+    }
+}
+
+
+
+
+// if (arrayHistoryGame == undefined) {
+
+//     arrayHistoryGame = [];
+//     console.log(typeof arrayHistoryGame + "became ARRAY");
+// } else {
+//     console.log("dsadhkaskldha");
+//     window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
+// }
+
+
+console.log(arrayHistoryGame);
 
 btnStartGame.addEventListener("click", function () {
 
     startGameQuiz();
 
+
+
 });
 
 btnHighIdScore.addEventListener("click", function () {
+
     flagBtnPress = true;
     checkStyleElements(flagBtnPress);
     containerScore.classList.remove("hide");
-    // arrayHistoryGame = JSON.parse(window.localStorage.getItem("names"));
-    console.log("11111111111111111111111111111111")
-    arrayHistoryGame = JSON.parse(window.localStorage.getItem("names"));
+
+    if (window.localStorage.getItem("names")) {
+
+        register.innerHTML = "";
+        // arrayHistoryGame = JSON.parse(window.localStorage.getItem("names"));
+        arrayNames = JSON.parse(window.localStorage.getItem("names"));
+        for (var i = 0; i < arrayNames.length; i++) {
+
+            var labelTag = document.createElement("li");
+            labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
+            labelTag.setAttribute("data-id", i);
+            register.appendChild(labelTag);
+        }
 
 
-    console.log(arrayHistoryGame);
+    }
+
+
+
+    // console.log(arrayHistoryGame);
 });
 
 
@@ -99,6 +149,7 @@ btnHomePage.addEventListener("click", function () {
     flagBtnPress = false;
     checkStyleElements(flagBtnPress);
     btnHighIdScore.disabled = false;
+    console.log(typeof arrayHistoryGame);
 
 
 });
@@ -253,10 +304,7 @@ function checkInput() {
 
     } else {
 
-        textInput.value = "";
 
-
-        console.log("inside of Local Storage");
         showHighScore();
         renderPlayerNames(input, userScore);
     }
@@ -287,35 +335,42 @@ function showHighScore() {
 }
 
 function renderPlayerNames(input, userScore) {
-    console.log(userScore + " before creating player object");
+
     var Player = {
 
         name: input.trim(),
         score: userScore
     };
 
-    console.log(Player.score);
-
 
     arrayHistoryGame.push(Player);
-
+    textInput.value = "";
     window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
 
-    arrayHistoryGame = JSON.parse(window.localStorage.getItem("names"));
+    // arrayHistoryGame = JSON.parse(window.localStorage.getItem("names"));
+    register.innerHTML = "";
+    arrayNames = JSON.parse(window.localStorage.getItem("names"));
+    for (var i = 0; i < arrayNames.length; i++) {
 
-    console.log(arrayHistoryGame + "array of the history game ");
+        var labelTag = document.createElement("li");
+        labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
+        labelTag.setAttribute("data-id", i);
+        register.appendChild(labelTag);
+    }
 
-    var arrayNames = JSON.parse(window.localStorage.getItem("names"));
-    console.log(arrayNames + "new array that was create");
-    var labelTag = document.createElement("li");
-    labelTag.setAttribute("data-id", index);
 
-    labelTag.textContent = arrayNames[index].name + " " + arrayNames[index].score;
 
-    console.log(labelTag.getAttribute("data-id"));
-    // console.log(i + " this is i ");
-    register.appendChild(labelTag);
-    index++;
+
+    // var arrayNames = JSON.parse(window.localStorage.getItem("names"));
+    // var labelTag = document.createElement("li");
+    // labelTag.setAttribute("data-id", index);
+    // labelTag.textContent = arrayNames[index].name + " " + arrayNames[index].score;
+    // register.appendChild(labelTag);
+    // index++;
+
+
+
+
 }
 
 // if (Array.isArray(arrayHistoryGame)) {
