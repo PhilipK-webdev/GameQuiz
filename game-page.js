@@ -363,6 +363,7 @@ function generateElement() {
         var labelTag = document.createElement("li");
         labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
         labelTag.setAttribute("data-id", i);
+        // labelTag.getAttribute("class", "badge badge-primary text-wrap");
         register.appendChild(labelTag);
     }
 }
