@@ -272,7 +272,9 @@ function checkStyleElements(flagBtnPress) {
 // function - cheking the input of the user after he finished the game.
 function checkInput() {
     input = textInput.value;
-    if (input === "" || !isNaN(input) || input.length > 2 || input.length < 1) {
+    var pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
+    var hasNumber = /\d/;
+    if (input === "" || hasNumber.test(input) || input.length > 2 || input.length < 1 || pattern.test(input)) {
         console.log(input);
         alert("Wrong input, Try again");
         textInput.value = "";
