@@ -364,6 +364,8 @@ function generateElement() {
         labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
         labelTag.setAttribute("data-id", i);
         // labelTag.getAttribute("class", "badge badge-primary text-wrap");
+        register.classList.add("text-white");
+        register.classList.add("bg-primary")
         register.appendChild(labelTag);
     }
 }
