@@ -1,8 +1,4 @@
-var flagBtnPress;
-var arrayHistoryGame;
-var userScore = 0;
-var numQuestion = 0;
-var gameSeconds = 60;
+// Declaration
 var question = document.querySelector("#question");
 var option1 = document.querySelector("#option1");
 var option2 = document.querySelector("#option2");
@@ -22,7 +18,13 @@ var btnClearHistory = document.querySelector("#submitClearHistory");
 var items = document.querySelector("#items");
 var horizon = document.querySelector("#horizon");
 var paragraph = document.querySelector("#paragraph");
+var gameSeconds = 60;
+var userScore = 0;
+var numQuestion = 0;
+var flagBtnPress;
+var arrayHistoryGame;
 
+// Object Of Questions.
 var Questions = [
 
     {
@@ -63,7 +65,6 @@ var Questions = [
 
 ];
 
-// window.onload = function () {
 setArray();
 function setArray() {
     arrayHistoryGame = JSON.parse(localStorage.getItem("names")); //get data from storage
@@ -73,24 +74,6 @@ function setArray() {
         console.log(arrayHistoryGame);
     }
 }
-// arrayHistoryGame = JSON.parse(localStorage.getItem("names")); //get data from storage
-// console.log(arrayHistoryGame);
-// if (arrayHistoryGame == null) {
-//     arrayHistoryGame = []; //if data exist
-//     console.log(arrayHistoryGame);
-// for (var i = 0; i < arrayHistoryGame.length; i++) {
-
-//     var labelTag = document.createElement("li");
-//     labelTag.textContent = arrayHistoryGame[i].name + " " + arrayHistoryGame[i].score;
-//     labelTag.setAttribute("data-id", i);
-//     register.appendChild(labelTag);
-// }
-
-
-// } else { //if nothing exist in storage
-
-// }
-// }
 
 if (gameSeconds < 25) {
 
@@ -98,12 +81,49 @@ if (gameSeconds < 25) {
     btnStartGame.disabled = true;
 }
 
+// Button Start Game
 btnStartGame.addEventListener("click", function () {
 
 
     startGameQuiz();
 });
 
+// Button Check The History Game
+btnHighIdScore.addEventListener("click", function () {
+
+    flagBtnPress = true;
+    checkStyleElements(flagBtnPress);
+    containerScore.classList.remove("hide");
+
+    if (window.localStorage.getItem("names")) {
+        generateElement();
+    }
+});
+
+// Button Going Back To Home-Page
+btnHomePage.addEventListener("click", function () {
+    flagBtnPress = false;
+    checkStyleElements(flagBtnPress);
+    btnHighIdScore.disabled = false;
+});
+// Button Submit the Input from the User(Player).
+btnSubmit.addEventListener("click", function (event) {
+
+    event.preventDefault();
+    var input;
+    checkInput();
+});
+
+// Button clean The History Game.
+btnClearHistory.addEventListener("click", function () {
+
+    window.localStorage.removeItem("names");
+    arrayHistoryGame = [];
+    while (register.firstChild) {
+        register.removeChild(register.firstChild);
+    }
+});
+// function begin the game - settings
 function startGameQuiz() {
 
     document.querySelector(".title").classList.add("hide");
@@ -133,6 +153,8 @@ function startGameQuiz() {
     startIntervel();
 
 }
+
+// Adding EventListeners
 function renderID() {
 
     changeTheHTML(numQuestion);
@@ -147,16 +169,14 @@ function renderID() {
     }
 }
 
+// temp function - Logic
 var temp = function () {
 
     checkI = this.getAttribute("data-id");
     newId = parseInt(checkI);
-
-
     horizon.classList.remove("hide");
-    if (numQuestion < Questions.length) {
 
-        console.log(newId);
+    if (numQuestion < Questions.length) {
 
         if (Questions[numQuestion].correctAnswer === newId) {
 
@@ -169,15 +189,12 @@ var temp = function () {
         }
         numQuestion++;
         changeTheHTML(numQuestion);
-
     }
-
 }
+
+// function of the Timer.
 function startIntervel() {
-
-
     var gameToPlay = setInterval(function () {
-
         gameSeconds--;
         timerRun.textContent = "Time: " + gameSeconds;
 
@@ -191,12 +208,10 @@ function startIntervel() {
 
     }, 1000)
 }
-
+// function - change the questions during the game
 function changeTheHTML(numQuestion) {
 
-
     setTimeout(function () {
-
 
         if (numQuestion <= Questions.length - 1) {
 
@@ -207,13 +222,12 @@ function changeTheHTML(numQuestion) {
             option4.textContent = Questions[numQuestion].answers[3];
             horizon.classList.add("hide");
             paragraph.textContent = "";
-
         }
 
     }, 500);
 
 }
-
+// function - after the timer is 0 or the player answer the Questions, changing the Page.
 function classChange() {
 
     if (containerForm.className === "container-form hide") {
@@ -227,25 +241,12 @@ function classChange() {
     gameSeconds = 60;
 }
 
-
-btnHighIdScore.addEventListener("click", function () {
-
-    flagBtnPress = true;
-    checkStyleElements(flagBtnPress);
-    containerScore.classList.remove("hide");
-
-    if (window.localStorage.getItem("names")) {
-        generateElement();
-    }
-});
-
-
+// function - Changing the page before the game. between history content and introduction page
 function checkStyleElements(flagBtnPress) {
 
     var z = document.querySelector(".title").getAttribute("class");
     var x = containerScore.getAttribute("class");
     var y = document.querySelector(".nav-bar").getAttribute("class");
-
     if (flagBtnPress) {
 
         console.log(flagBtnPress);
@@ -262,34 +263,15 @@ function checkStyleElements(flagBtnPress) {
 
     } else {
 
-
         document.querySelector(".title").classList.remove("hide");
         document.querySelector(".nav-bar").classList.remove("hide");
         containerForm.classList.add("hide");
         containerScore.classList.add("hide");
     }
-
-
 }
-
-btnHomePage.addEventListener("click", function () {
-    flagBtnPress = false;
-    checkStyleElements(flagBtnPress);
-    btnHighIdScore.disabled = false;
-});
-
-
-btnSubmit.addEventListener("click", function (event) {
-
-    event.preventDefault();
-    var input;
-    checkInput();
-});
-
+// function - cheking the input of the user after he finished the game.
 function checkInput() {
-
     input = textInput.value;
-
     if (input === "" || !isNaN(input) || input.length > 2 || input.length < 1) {
         console.log(input);
         alert("Wrong input, Try again");
@@ -301,7 +283,7 @@ function checkInput() {
         renderPlayerNames(input, userScore);
     }
 }
-
+// funtion- Changing the layout of the page.
 function showHighScore() {
 
     if (containerForm.className === "container-form") {
@@ -325,7 +307,7 @@ function showHighScore() {
     }
 
 }
-
+// function - create Object Player , Local Storage.
 function renderPlayerNames(input, userScore) {
 
     var Player = {
@@ -340,15 +322,7 @@ function renderPlayerNames(input, userScore) {
     generateElement();
 }
 
-btnClearHistory.addEventListener("click", function () {
-
-    window.localStorage.removeItem("names");
-    arrayHistoryGame = [];
-    while (register.firstChild) {
-        register.removeChild(register.firstChild);
-    }
-});
-
+// function - sort array of the names.Display on the Page.
 function generateElement() {
 
     register.innerHTML = "";
@@ -364,26 +338,9 @@ function generateElement() {
         labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
         labelTag.setAttribute("data-id", i);
         // labelTag.getAttribute("class", "badge badge-primary text-wrap");
-        register.classList.add("text-white");
+        register.classList.add("text-dark");
         register.classList.add("bg-primary")
         register.appendChild(labelTag);
     }
 }
-
-
-
-
-
-
-
-
-// register.innerHTML = "";
-            // arrayNames = JSON.parse(window.localStorage.getItem("names"));
-            // for (var i = 0; i < arrayNames.length; i++) {
-
-            //     var labelTag = document.createElement("li");
-            //     labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
-            //     labelTag.setAttribute("data-id", i);
-            //     register.appendChild(labelTag);
-            // }
 
