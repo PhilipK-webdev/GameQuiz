@@ -21,6 +21,7 @@ var paragraph = document.querySelector("#paragraph");
 var gameSeconds = 60;
 var userScore = 0;
 var numQuestion = 0;
+var arrOptions = [];
 var flagBtnPress;
 var arrayHistoryGame;
 
@@ -28,40 +29,47 @@ var arrayHistoryGame;
 var Questions = [
 
     {
-        question: "The Olympics are held every how many years?",
-        answers: ["4 years", "5 years", "3 years", "2 years"],
+        question: "What year Israel was recognize as a Country?",
+        answers: ["1948", "1947", "1949", "1946"],
         correctAnswer: 0
     },
+
     {
-        question: "In American Football, a touchdown is worth how many points?",
-        answers: ["7 points ", "6 points", "8 points ", "5 points"],
-        correctAnswer: 1
-    },
-    {
-        question: "How many players are on a baseball team? ",
-        answers: ["8 players", "10 players", "11 players", "9 players"],
-        correctAnswer: 3
-    },
-    {
-        question: "What was Wilt Chamberlain’s record for most points in a single game? ",
-        answers: ["98 points", "100 points", "99 points", "101 points"],
-        correctAnswer: 1
-    },
-    {
-        question: "How many seasons did Michael Jordan play with the Chicago Bulls before going back into the game with the Wizards?",
-        answers: ["13 seasons", "12 seasons", "11 seasons", "14 seasons"],
-        correctAnswer: 0
-    },
-    {
-        question: "What is the only country to have played in every single soccer World Cup?",
-        answers: ["Argentina", "Germany", "Brazil", "France"],
+        question: "How many times has Israel won the Eurovision Song Contest?",
+        answers: ["0 times", "5 times", "3 years", "2 years"],
         correctAnswer: 2
     },
     {
-        question: "How many personal fouls does a player get to be ejected from an NBA basketball game?",
-        answers: ["4 personal fouls", "5 personal fouls", "7 personal fouls", "6 personal fouls"],
+        question: "How far is Tel Aviv from Jerusalem?",
+        answers: ["103 km ", "12 km", "45 km ", "54 km"],
         correctAnswer: 3
+    },
+    {
+        question: "Which Israeli city is twinned with Durban, Los Angeles and Toronto?",
+        answers: ["Tel-Aviv", "Eilat", "Holon", "Haifa"],
+        correctAnswer: 1
+    },
+    {
+        question: "How many kilometers of highway does Israel have? ",
+        answers: ["130 km", "330 km", "440 km", "230 km"],
+        correctAnswer: 3
+    },
+    {
+        question: "What is the national bird of Israel?",
+        answers: ["Black heron", "Northen gannet ", "Hoopoe", "Pygmy cormorant"],
+        correctAnswer: 2
+    },
+    {
+        question: "Who was the first Israeli in space?",
+        answers: ["Ilan Ramon", "Ehud Barak", "Avigdor Khalani", "Yoni Netanyahu"],
+        correctAnswer: 0
+    },
+    {
+        question: "How many official beaches does Israel have?",
+        answers: ["73", "8", "137", "37"],
+        correctAnswer: 2
     }
+
 
 ];
 
@@ -110,7 +118,7 @@ btnHomePage.addEventListener("click", function () {
 btnSubmit.addEventListener("click", function (event) {
 
     event.preventDefault();
-    var input;
+
     checkInput();
 });
 
@@ -160,12 +168,12 @@ function renderID() {
     changeTheHTML(numQuestion);
     var newId = 0;
     var checkI = 0;
-    arr = [option1, option2, option3, option4];
+    arrOptions = [option1, option2, option3, option4];
 
     for (var i = 0; i < 4; i++) {
 
-        arr[i].setAttribute("data-id", i);
-        arr[i].addEventListener("click", temp, true);
+        arrOptions[i].setAttribute("data-id", i);
+        arrOptions[i].addEventListener("click", temp, true);
     }
 }
 
@@ -244,19 +252,18 @@ function classChange() {
 // function - Changing the page before the game. between history content and introduction page
 function checkStyleElements(flagBtnPress) {
 
-    var z = document.querySelector(".title").getAttribute("class");
-    var x = containerScore.getAttribute("class");
-    var y = document.querySelector(".nav-bar").getAttribute("class");
+    var getClassTitle = document.querySelector(".title").getAttribute("class");
+    var getClassNavBar = document.querySelector(".nav-bar").getAttribute("class");
     if (flagBtnPress) {
 
         console.log(flagBtnPress);
-        if (z === "title") {
+        if (getClassTitle === "title") {
 
             document.querySelector(".title").classList.add("hide");
 
         }
 
-        if (y === "nav-bar") {
+        if (getClassNavBar === "nav-bar") {
 
             document.querySelector(".nav-bar").classList.add("hide");
         }
@@ -271,18 +278,57 @@ function checkStyleElements(flagBtnPress) {
 }
 // function - cheking the input of the user after he finished the game.
 function checkInput() {
+    var input;
     input = textInput.value;
+    // -----------------
+    // Regex Expression
     var pattern = new RegExp(/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/);
     var hasNumber = /\d/;
+    // -----------------
     if (input === "" || hasNumber.test(input) || input.length > 2 || input.length < 1 || pattern.test(input)) {
-        console.log(input);
         alert("Wrong input, Try again");
         textInput.value = "";
 
     } else {
 
-        showHighScore();
         renderPlayerNames(input, userScore);
+        showHighScore();
+    }
+}
+
+
+// function - create Object Player , Local Storage.
+function renderPlayerNames(input, userScore) {
+
+    var Player = {
+
+        name: input.toUpperCase(),
+        score: userScore
+    };
+
+    arrayHistoryGame.push(Player);
+    textInput.value = "";
+    window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
+    generateElement();
+}
+
+// function - sort array of the names.Display on the Page.
+function generateElement() {
+
+    register.innerHTML = "";
+    arrayNames = JSON.parse(window.localStorage.getItem("names"));
+
+    arrayNames.sort(function (a, b) {
+        return b.score - a.score;
+    });
+    for (var i = 0; i < arrayNames.length; i++) {
+
+        var labelTag = document.createElement("li");
+        labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
+        labelTag.setAttribute("data-id", i);
+        register.classList.add("text-dark");
+        register.classList.add("bg-primary")
+        register.appendChild(labelTag);
     }
 }
 // funtion- Changing the layout of the page.
@@ -309,40 +355,5 @@ function showHighScore() {
     }
 
 }
-// function - create Object Player , Local Storage.
-function renderPlayerNames(input, userScore) {
 
-    var Player = {
-
-        name: input.toUpperCase(),
-        score: userScore
-    };
-
-    arrayHistoryGame.push(Player);
-    textInput.value = "";
-    window.localStorage.setItem("names", JSON.stringify(arrayHistoryGame));
-    generateElement();
-}
-
-// function - sort array of the names.Display on the Page.
-function generateElement() {
-
-    register.innerHTML = "";
-    arrayNames = JSON.parse(window.localStorage.getItem("names"));
-
-    arrayNames.sort(function (a, b) {
-        return b.score - a.score;
-    });
-    console.log(arrayNames);
-    for (var i = 0; i < arrayNames.length; i++) {
-
-        var labelTag = document.createElement("li");
-        labelTag.textContent = arrayNames[i].name + " " + arrayNames[i].score;
-        labelTag.setAttribute("data-id", i);
-        // labelTag.getAttribute("class", "badge badge-primary text-wrap");
-        register.classList.add("text-dark");
-        register.classList.add("bg-primary")
-        register.appendChild(labelTag);
-    }
-}
 
