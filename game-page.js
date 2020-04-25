@@ -29,7 +29,7 @@ var arrayHistoryGame;
 var Questions = [
 
     {
-        question: "What year Israel was recognize as a Country?",
+        question: "What year Israel was recognize as a State?",
         answers: ["1948", "1947", "1949", "1946"],
         correctAnswer: 0
     },
@@ -69,7 +69,6 @@ var Questions = [
         answers: ["73", "8", "137", "37"],
         correctAnswer: 2
     }
-
 
 ];
 
@@ -173,12 +172,12 @@ function renderID() {
     for (var i = 0; i < 4; i++) {
 
         arrOptions[i].setAttribute("data-id", i);
-        arrOptions[i].addEventListener("click", temp, true);
+        arrOptions[i].addEventListener("click", renderQuestions, true);
     }
 }
 
-// temp function - Logic
-var temp = function () {
+// renderQuestions function - Logic
+var renderQuestions = function () {
 
     checkI = this.getAttribute("data-id");
     newId = parseInt(checkI);
