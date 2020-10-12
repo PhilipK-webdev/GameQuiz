@@ -127,11 +127,11 @@ h1{
     text-align: left;
 }
 
-[class*="col-"]{
+	[class*="col-"]{
 
-    padding-left: 50px !important;
-    padding-right: none !important;
-}
+		padding-left: 50px !important;
+		padding-right: none !important;
+	}
 
 hr{
     background-color: yellow;

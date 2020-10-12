@@ -1,5 +1,8 @@
-# Introduction: Home Assignment Code Quiz
-
+  [![Generic badge](https://img.shields.io/badge/html-green.svg)](https://shields.io/)
+  [![Generic badge](https://img.shields.io/badge/css-green.svg)](https://shields.io/)
+  ![followers](https://img.shields.io/github/followers/PhilipK-webdev?logoColor=red&style=social)
+  ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
+# Introduction:  Code Quiz
 
 As you proceed in your career as a web developer, you will probably be asked to complete a coding assessment, which is typically a combination of multiple-choice questions and interactive challenges. Build a timed code quiz with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
@@ -10,18 +13,10 @@ AS A coding bootcamp student
 I WANT to take a timed quiz on General Questions 
 ```
 
-## Motivation
+## Screenshot 
 
-```
-During these past last months we study about technologies : HTML5, CSS and JavaScript.
-On this project i will demonstrate how to use javascript as DOM , workign side by side with Bootstrap and css.
+![](./assets/img/game.PNG)
 
-
-```
-## Getting Started
-
-To start using the Web Page the User need to clone the project .
-git clone "url".
 
 ### Prerequisites
 
