@@ -36,7 +36,7 @@ var Questions = [
 
     {
         question: "How many times has Israel won the Eurovision Song Contest?",
-        answers: ["0 times", "5 times", "3 years", "2 years"],
+        answers: ["0 times", "5 times", "3 times", "2 times"],
         correctAnswer: 2
     },
     {
@@ -75,10 +75,8 @@ var Questions = [
 setArray();
 function setArray() {
     arrayHistoryGame = JSON.parse(localStorage.getItem("names")); //get data from storage
-    console.log(arrayHistoryGame);
     if (arrayHistoryGame == null) {
         arrayHistoryGame = []; //if data exist
-        console.log(arrayHistoryGame);
     }
 }
 
@@ -165,10 +163,7 @@ function startGameQuiz() {
 function renderID() {
 
     changeTheHTML(numQuestion);
-    var newId = 0;
-    var checkI = 0;
     arrOptions = [option1, option2, option3, option4];
-
     for (var i = 0; i < 4; i++) {
 
         arrOptions[i].setAttribute("data-id", i);
